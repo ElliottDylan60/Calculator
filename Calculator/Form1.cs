@@ -70,7 +70,7 @@ namespace Calculator
             txtOutput.AppendText("9");
         }
         #endregion
-
+        #region operators
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtOutput.Clear();
@@ -87,5 +87,108 @@ namespace Calculator
                 // ignore
             }
         }
+
+        private void btnOpenSoft_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("(");
+        }
+
+        private void btnCloseSoft_Click(object sender, EventArgs e) {
+            txtOutput.AppendText(")");
+        }
+        #endregion
+        #region operators
+        private void btnEqual_Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("PostFix: "+toPostFix());
+            //Console.WriteLine(outputText);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("+");
+        }
+
+        private void btnSubtract_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("-");
+        }
+
+        private void btnMultiply_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("x");
+        }
+
+        private void btnDivide_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("/");
+        }
+        #endregion
+        #region shunting-yard Algorithm
+        /// <summary>
+        /// Converts infix to postfix
+        /// </summary>
+        private string toPostFix() {
+            string result = "";
+            string input = txtOutput.Text;
+            Stack<char> stack = new Stack<char>();
+            for (int i = 0; i < input.Length; ++i) {
+                char ch = input[i];
+                if (char.IsDigit(ch)) // if character is number
+                {
+                    result += ch;
+                }
+                else if (ch == '(') // if character is open bracket
+                {
+                    stack.Push(ch);
+                }
+                else if (ch == ')') // if character is closing bracket
+                {
+                    while (stack.Count > 0 && stack.Peek() != '(')
+                    {
+                        result += stack.Pop();
+                    }
+                    if (stack.Count > 0 && stack.Peek() != '(')
+                    {
+                        txtOutput.Text = "Syntax Error";
+                    }
+                    else
+                    {
+                        stack.Pop();
+                    }
+                }
+                else { 
+                    while(stack.Count > 0 && precedence(ch) <= precedence(stack.Peek())){
+                        result += stack.Pop();
+                    }
+                    stack.Push(ch);
+                }
+                
+
+            }
+            while (stack.Count > 0) {
+                result += stack.Pop();
+            }
+            return result;
+        }
+        /// <summary>
+        /// Determins the precedence of each operator
+        /// </summary>
+        private int precedence(char op) {
+            switch (op) {
+                case '+':
+                case '-':
+                    return 1;
+                case 'x':
+                case '/':
+                    return 2;
+                case '^':
+                    return 3;
+            }
+            return -1;
+        }
+        #endregion
+
+        
     }
 }

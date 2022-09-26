@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtOutput = new System.Windows.Forms.RichTextBox();
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSubtract = new System.Windows.Forms.Button();
@@ -56,17 +55,8 @@
             this.btnTan = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.txtOutput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOutput.Location = new System.Drawing.Point(12, 12);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtOutput.Size = new System.Drawing.Size(373, 45);
-            this.txtOutput.TabIndex = 0;
-            this.txtOutput.Text = "";
             // 
             // btnEqual
             // 
@@ -77,6 +67,7 @@
             this.btnEqual.TabIndex = 1;
             this.btnEqual.Text = "=";
             this.btnEqual.UseVisualStyleBackColor = true;
+            this.btnEqual.Click += new System.EventHandler(this.btnEqual_Click);
             // 
             // btnAdd
             // 
@@ -87,6 +78,7 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnSubtract
             // 
@@ -97,6 +89,7 @@
             this.btnSubtract.TabIndex = 3;
             this.btnSubtract.Text = "-";
             this.btnSubtract.UseVisualStyleBackColor = true;
+            this.btnSubtract.Click += new System.EventHandler(this.btnSubtract_Click);
             // 
             // btnMultiply
             // 
@@ -107,6 +100,7 @@
             this.btnMultiply.TabIndex = 4;
             this.btnMultiply.Text = "x";
             this.btnMultiply.UseVisualStyleBackColor = true;
+            this.btnMultiply.Click += new System.EventHandler(this.btnMultiply_Click);
             // 
             // btnDivide
             // 
@@ -117,6 +111,7 @@
             this.btnDivide.TabIndex = 5;
             this.btnDivide.Text = "/";
             this.btnDivide.UseVisualStyleBackColor = true;
+            this.btnDivide.Click += new System.EventHandler(this.btnDivide_Click);
             // 
             // btnDecimal
             // 
@@ -287,6 +282,7 @@
             this.btnCloseSoft.TabIndex = 21;
             this.btnCloseSoft.Text = ")";
             this.btnCloseSoft.UseVisualStyleBackColor = true;
+            this.btnCloseSoft.Click += new System.EventHandler(this.btnCloseSoft_Click);
             // 
             // btnOpenSoft
             // 
@@ -297,6 +293,7 @@
             this.btnOpenSoft.TabIndex = 22;
             this.btnOpenSoft.Text = "(";
             this.btnOpenSoft.UseVisualStyleBackColor = true;
+            this.btnOpenSoft.Click += new System.EventHandler(this.btnOpenSoft_Click);
             // 
             // btnSin
             // 
@@ -350,12 +347,23 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // txtOutput
+            // 
+            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
+            this.txtOutput.Location = new System.Drawing.Point(12, 12);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
+            this.txtOutput.Size = new System.Drawing.Size(374, 47);
+            this.txtOutput.TabIndex = 28;
+            this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.ClientSize = new System.Drawing.Size(397, 437);
+            this.Controls.Add(this.txtOutput);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnTan);
@@ -383,17 +391,15 @@
             this.Controls.Add(this.btnSubtract);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEqual);
-            this.Controls.Add(this.txtOutput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.RichTextBox txtOutput;
         private System.Windows.Forms.Button btnEqual;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSubtract;
@@ -421,6 +427,7 @@
         private System.Windows.Forms.Button btnTan;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.TextBox txtOutput;
     }
 }
 
