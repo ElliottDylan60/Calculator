@@ -97,13 +97,9 @@ namespace Calculator
         private void btnCloseSoft_Click(object sender, EventArgs e) {
             txtOutput.AppendText(")");
         }
-        #endregion
-        #region operators
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("PostFix: "+toPostFix());
-            Console.WriteLine("Evaulator: " + PostFixEvaulator(toPostFix()));
-            //Console.WriteLine(outputText);
+            txtOutput.Text = PostFixEvaulator(toPostFix());
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -126,6 +122,7 @@ namespace Calculator
             txtOutput.AppendText("/");
         }
         #endregion
+
         #region shunting-yard Algorithm
         /// <summary>
         /// Converts infix to postfix
@@ -134,7 +131,7 @@ namespace Calculator
             string result = "";
             string input = txtOutput.Text;
             Stack<char> stack = new Stack<char>();
-            for (int i = 0; i < input.Length; ++i) {
+            for (int i = 0; i < input.Length; i++) {
                 char ch = input[i];
                 if (char.IsDigit(ch)) // if character is number
                 {
@@ -215,11 +212,11 @@ namespace Calculator
                     stack.Push(ans.ToString());
                 }
                 else {
-                    stack.Push(ch);
+                    stack.Push(PostFix.Substring(j, 1));
                 }
-                return (string)stack.Pop();
+                
             }
-            return "";
+            return (string)stack.Pop();
         }
         /// <summary>
         /// Determins the precedence of each operator
