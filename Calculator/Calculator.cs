@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Calculator
 {
-    public partial class Form1 : Form
+    public partial class Calculator : Form
     {
-        public Form1()
+        public Calculator()
         {
             InitializeComponent();
         }
@@ -101,6 +102,7 @@ namespace Calculator
         private void btnEqual_Click(object sender, EventArgs e)
         {
             Console.WriteLine("PostFix: "+toPostFix());
+            Console.WriteLine("Evaulator: " + PostFixEvaulator(toPostFix()));
             //Console.WriteLine(outputText);
         }
 
@@ -170,6 +172,54 @@ namespace Calculator
                 result += stack.Pop();
             }
             return result;
+        }
+        private string PostFixEvaulator(string PostFix) {
+            Stack stack = new Stack();
+            int a, b, ans;
+            for (int j = 0; j < PostFix.Length; j++) {
+                string ch = PostFix.Substring(j, 1);
+                if (ch.Equals("+"))
+                {
+                    string sa = (string)stack.Pop();
+                    string sb = (string)stack.Pop();
+                    a = Convert.ToInt32(sb);
+                    b = Convert.ToInt32(sa);
+                    ans = a + b;
+                    stack.Push(ans.ToString());
+                }
+                else if (ch.Equals("-"))
+                {
+                    string sa = (string)stack.Pop();
+                    string sb = (string)stack.Pop();
+                    a = Convert.ToInt32(sb);
+                    b = Convert.ToInt32(sa);
+                    ans = a - b;
+                    stack.Push(ans.ToString());
+                }
+                else if (ch.Equals("x"))
+                {
+                    string sa = (string)stack.Pop();
+                    string sb = (string)stack.Pop();
+                    a = Convert.ToInt32(sb);
+                    b = Convert.ToInt32(sa);
+                    ans = a * b;
+                    stack.Push(ans.ToString());
+                }
+                else if (ch.Equals("/"))
+                {
+                    string sa = (string)stack.Pop();
+                    string sb = (string)stack.Pop();
+                    a = Convert.ToInt32(sb);
+                    b = Convert.ToInt32(sa);
+                    ans = a / b;
+                    stack.Push(ans.ToString());
+                }
+                else {
+                    stack.Push(ch);
+                }
+                return (string)stack.Pop();
+            }
+            return "";
         }
         /// <summary>
         /// Determins the precedence of each operator
