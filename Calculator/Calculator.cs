@@ -99,7 +99,7 @@ namespace Calculator
         }
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            txtOutput.Text = PostFixEvaulator(toPostFix());
+            txtOutput.Text = PostFixEvaluator(toPostFix(TokenizeEquation(txtOutput.Text)));
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -124,99 +124,119 @@ namespace Calculator
         #endregion
 
         #region shunting-yard Algorithm
-        /// <summary>
-        /// Converts infix to postfix
-        /// </summary>
-        private string toPostFix() {
-            string result = "";
-            string input = txtOutput.Text;
-            Stack<char> stack = new Stack<char>();
-            for (int i = 0; i < input.Length; i++) {
-                char ch = input[i];
-                if (char.IsDigit(ch)) // if character is number
+        private List<string> toPostFix(List<string> inFix) {
+            try
+            {
+                List<string> result = new List<string>();
+                Stack<string> stack = new Stack<string>();
+                for (int i = 0; i < inFix.Count; i++)
                 {
-                    result += ch;
-                }
-                else if (ch == '(') // if character is open bracket
-                {
-                    stack.Push(ch);
-                }
-                else if (ch == ')') // if character is closing bracket
-                {
-                    while (stack.Count > 0 && stack.Peek() != '(')
+                    string ch = inFix[i];
+                    int chNum;
+                    bool isNum = Int32.TryParse(ch, out chNum);
+                    if (isNum)
                     {
-                        result += stack.Pop();
+                        result.Add(ch);
                     }
-                    if (stack.Count > 0 && stack.Peek() != '(')
+                    else if (ch == "(")
                     {
-                        txtOutput.Text = "Syntax Error";
+                        stack.Push(ch);
+                    }
+                    else if (ch == ")")
+                    {
+                        while (stack.Count > 0 && stack.Peek() != "(")
+                        {
+                            result.Add(stack.Pop());
+
+                        }
+                        if (stack.Count > 0 && stack.Peek() != "(")
+                        {
+                            txtOutput.Text = "Syntax Error";
+                            Console.WriteLine("Syntax Error");
+                        }
+                        else
+                        {
+                            stack.Pop();
+                        }
+
                     }
                     else
                     {
-                        stack.Pop();
+                        while (stack.Count > 0 && precedence(ch) <= precedence(stack.Peek()))
+                        {
+                            result.Add(stack.Pop());
+                        }
+                        stack.Push(ch);
                     }
                 }
-                else { 
-                    while(stack.Count > 0 && precedence(ch) <= precedence(stack.Peek())){
-                        result += stack.Pop();
-                    }
-                    stack.Push(ch);
+                while (stack.Count > 0)
+                {
+                    result.Add(stack.Pop());
                 }
-                
-
+                return result;
             }
-            while (stack.Count > 0) {
-                result += stack.Pop();
+            catch (Exception err) {
+                txtOutput.Text = "Syntax Error";
+                return new List<string>();
             }
-            return result;
         }
-        private string PostFixEvaulator(string PostFix) {
-            Stack stack = new Stack();
-            int a, b, ans;
-            for (int j = 0; j < PostFix.Length; j++) {
-                string ch = PostFix.Substring(j, 1);
-                if (ch.Equals("+"))
+        
+        private string PostFixEvaluator(List<string> PostFix) {
+            try
+            {
+                Stack stack = new Stack();
+                int a, b, ans;
+                for (int i = 0; i < PostFix.Count; i++)
                 {
-                    string sa = (string)stack.Pop();
-                    string sb = (string)stack.Pop();
-                    a = Convert.ToInt32(sb);
-                    b = Convert.ToInt32(sa);
-                    ans = a + b;
-                    stack.Push(ans.ToString());
+                    string ch = PostFix[i];
+                    if (ch.Equals("+"))
+                    {
+                        string sa = (string)stack.Pop();
+                        string sb = (string)stack.Pop();
+                        a = Convert.ToInt32(sb);
+                        b = Convert.ToInt32(sa);
+                        ans = a + b;
+                        stack.Push(ans.ToString());
+                    }
+                    else if (ch.Equals("-"))
+                    {
+                        string sa = (string)stack.Pop();
+                        string sb = (string)stack.Pop();
+                        a = Convert.ToInt32(sb);
+                        b = Convert.ToInt32(sa);
+                        ans = a - b;
+                        stack.Push(ans.ToString());
+                    }
+                    else if (ch.Equals("x"))
+                    {
+                        string sa = (string)stack.Pop();
+                        string sb = (string)stack.Pop();
+                        a = Convert.ToInt32(sb);
+                        b = Convert.ToInt32(sa);
+                        ans = a * b;
+                        stack.Push(ans.ToString());
+                    }
+                    else if (ch.Equals("/"))
+                    {
+                        string sa = (string)stack.Pop();
+                        string sb = (string)stack.Pop();
+                        a = Convert.ToInt32(sb);
+                        b = Convert.ToInt32(sa);
+                        ans = a / b;
+                        stack.Push(ans.ToString());
+                    }
+                    else
+                    {
+                        stack.Push(PostFix[i]);
+                    }
+
                 }
-                else if (ch.Equals("-"))
-                {
-                    string sa = (string)stack.Pop();
-                    string sb = (string)stack.Pop();
-                    a = Convert.ToInt32(sb);
-                    b = Convert.ToInt32(sa);
-                    ans = a - b;
-                    stack.Push(ans.ToString());
-                }
-                else if (ch.Equals("x"))
-                {
-                    string sa = (string)stack.Pop();
-                    string sb = (string)stack.Pop();
-                    a = Convert.ToInt32(sb);
-                    b = Convert.ToInt32(sa);
-                    ans = a * b;
-                    stack.Push(ans.ToString());
-                }
-                else if (ch.Equals("/"))
-                {
-                    string sa = (string)stack.Pop();
-                    string sb = (string)stack.Pop();
-                    a = Convert.ToInt32(sb);
-                    b = Convert.ToInt32(sa);
-                    ans = a / b;
-                    stack.Push(ans.ToString());
-                }
-                else {
-                    stack.Push(PostFix.Substring(j, 1));
-                }
-                
+                return (string)stack.Pop();
             }
-            return (string)stack.Pop();
+            catch (Exception err) {
+                txtOutput.Text = "Syntax Error";
+                return "Syntax Error";
+            }
         }
         /// <summary>
         /// Determins the precedence of each operator
@@ -234,8 +254,38 @@ namespace Calculator
             }
             return -1;
         }
+        private int precedence(string op)
+        {
+            switch (op)
+            {
+                case "+":
+                case "-":
+                    return 1;
+                case "x":
+                case "/":
+                    return 2;
+                case "^":
+                    return 3;
+            }
+            return -1;
+        }
         #endregion
 
-        
+        public List<string> TokenizeEquation(string equation) {
+            var delimiters = new[] { '(', '+', '-', 'x', '/', ')'};
+            var buffer = string.Empty;
+            var result = new List<string>();
+            foreach (var ch in equation) {
+                if (delimiters.Contains(ch)){
+                    if (buffer.Length > 0) result.Add(buffer);
+                    result.Add(ch.ToString());
+                    buffer = String.Empty;
+                }else {
+                    buffer += ch;
+                }
+            }
+            if (buffer.Length > 0) result.Add(buffer);
+            return result;
+        }
     }
 }
