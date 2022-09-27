@@ -48,6 +48,10 @@ namespace Calculator
         {
             InitializeComponent();
         }
+        private void Calculator_Load(object sender, EventArgs e)
+        {
+
+        }
         /*************************
                Drag and Drop
          *************************/
@@ -255,6 +259,7 @@ namespace Calculator
         /// </summary>
         private void btnMultiply_Click(object sender, EventArgs e)
         {
+            txtOutput.ForeColor = Color.Red;
             txtOutput.AppendText("x");  // Adds 'x' to textbox
         }
         /// <summary>
@@ -472,6 +477,7 @@ namespace Calculator
             if (buffer.Length > 0) result.Add(buffer); // add buffer to results
             return result;
         }
+
 
         #endregion
 
