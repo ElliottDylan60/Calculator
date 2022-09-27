@@ -21,62 +21,100 @@ namespace Calculator
               BUTTONS
         ******************/
         #region numbers
+        /// <summary>
+        /// Button Pressed
+        /// Add '0' to textbox
+        /// </summary>
         private void btn0_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("0"); // Adds '0' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '1' to textbox
+        /// </summary>
         private void btn1_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("1"); // Adds '1' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '2' to textbox
+        /// </summary>
         private void btn2_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("2"); // Adds '2' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '3' to textbox
+        /// </summary>
         private void btn3_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("3"); // Adds '3' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '4' to textbox
+        /// </summary>
         private void btn4_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("4"); // Adds '4' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '5' to textbox
+        /// </summary>
         private void btn5_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("5"); // Adds '5' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '6' to textbox
+        /// </summary>
         private void btn6_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("6"); // Adds '6' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '7' to textbox
+        /// </summary>
         private void btn7_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("7"); // Adds '7' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '8' to textbox
+        /// </summary>
         private void btn8_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("8"); // Adds '8' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add '9' to textbox
+        /// </summary>
         private void btn9_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("9"); // Adds '9' to textbox
         }
         #endregion
         #region operators
+        /// <summary>
+        /// Button Pressed
+        /// Clears textbox
+        /// </summary>
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtOutput.Clear(); // Clears textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Removes last character in textbox
+        /// </summary>
         private void btnBack_Click(object sender, EventArgs e)
         {
             try
@@ -88,38 +126,68 @@ namespace Calculator
                 // ignore
             }
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Adds '(' to textbox
+        /// </summary>
         private void btnOpenSoft_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("("); // Adds '(' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Add ')' to textbox
+        /// </summary>
         private void btnCloseSoft_Click(object sender, EventArgs e) {
             txtOutput.AppendText(")"); // Adds ')' to textbox
         }
+        /// <summary>
+        /// Button Pressed
+        /// Displays equation result
+        /// </summary>
         private void btnEqual_Click(object sender, EventArgs e)
         {
             txtOutput.Text = PostFixEvaluator(toPostFix(TokenizeEquation(txtOutput.Text))); // Calculates and displays answer
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Adds '+' to textbox
+        /// </summary>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("+");  // Adds '+' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Adds '-' to textbox
+        /// </summary>
         private void btnSubtract_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("-");  // Adds '-' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'x' to textbox
+        /// </summary>
         private void btnMultiply_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("x");  // Adds 'x' to textbox
         }
-
+        /// <summary>
+        /// Button Pressed
+        /// Adds '/' to textbox
+        /// </summary>
         private void btnDivide_Click(object sender, EventArgs e)
         {
             txtOutput.AppendText("/");  // Adds '/' to textbox
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds '±' to textbox
+        /// </summary>
+        private void btnSign_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("±");
         }
         #endregion
         /*********************************
@@ -179,6 +247,14 @@ namespace Calculator
                 {
                     result.Add(stack.Pop()); // add them to results
                 }
+                foreach (string ch in result) {
+                    Console.WriteLine(ch);
+                }
+                if (result.Contains("(")) { // checks if original equation only had one open parenthesis
+                    txtOutput.Text = "Syntax Error";
+                    return new List<string>();
+                }//±
+
                 return result;
             }
             catch (Exception err) {
@@ -295,5 +371,7 @@ namespace Calculator
             return result;
         }
         #endregion
+
+        
     }
 }

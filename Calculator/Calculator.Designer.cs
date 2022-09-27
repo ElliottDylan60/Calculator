@@ -143,6 +143,7 @@
             this.btnSign.TabIndex = 8;
             this.btnSign.Text = "+/-";
             this.btnSign.UseVisualStyleBackColor = true;
+            this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
             // btn1
             // 
@@ -357,7 +358,7 @@
             this.txtOutput.TabIndex = 28;
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // Form1
+            // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -392,7 +393,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEqual);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Calculator";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
