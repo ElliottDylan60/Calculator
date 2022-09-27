@@ -8,14 +8,98 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Runtime.CompilerServices;
 
 namespace Calculator
 {
     public partial class Calculator : Form
     {
+        /// <summary>
+        /// Keeps track of whether or not the user is pressing down on the application
+        /// used to move the form when user presses down
+        /// </summary>
+        private bool mouseDown;
+        /// <summary>
+        /// Keeps track of the last position the form was in.
+        /// used to move the form when user presses down
+        /// </summary>
+        private Point lastLocation;
+        /// <summary>
+        /// Format all Error Messages to look alike
+        /// </summary>
+        /// <param name="ErrorCode">Error Code, can be looked up at end of Form1.cs</param>
+        /// <param name="LineNumber">LineNumber of where the error occured</param>
+        public void ErrorMessage(Exception a, string ErrorCode, [CallerLineNumber] int LineNumber = 0)
+        {
+            try
+            {
+
+                MessageBox.Show(a.Message + "\n" +
+                                "Error Code: " + ErrorCode + "\n" +
+                                "Line: " + LineNumber +
+                                a.ToString());
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
         public Calculator()
         {
             InitializeComponent();
+        }
+        /*************************
+               Drag and Drop
+         *************************/
+        /// <summary>
+        /// When User presses down with the mouse on the form, this function keeps track of the mouse location and moves the form
+        /// </summary>
+        private void Main_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                mouseDown = true;// Mouse is pressed down: start moving form
+                lastLocation = e.Location; // get location of mouse
+            }
+            catch (Exception a)
+            {
+                ErrorMessage(a, "Could Not Move Window");
+            }
+        }
+        /// <summary>
+        /// When User lifts up with the mouse on the form, this function tells the program to stop moving the form
+        /// </summary>
+        private void Main_MouseUp(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                mouseDown = false;// Mouse is no longer pressed down: stop moving form
+            }
+            catch (Exception a)
+            {
+                ErrorMessage(a, "Could Not Move Window");
+            }
+        }
+        /// <summary>
+        /// When User presses down with the mouse on the form, this function keeps track of the mouse location and moves the form
+        /// </summary>
+        private void Main_MouseMove(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (mouseDown) // Mouse is pressed down: when mouse starts moving
+                {
+
+                    this.Location = new Point(
+                        (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);// set new location of mouse
+
+                    this.Update();// Moves form locatio to mouse location
+                }
+            }
+            catch (Exception a)
+            {
+                ErrorMessage(a, "Could Not Move Window");
+            }
         }
         /*****************
               BUTTONS
@@ -163,7 +247,7 @@ namespace Calculator
         /// </summary>
         private void btnSubtract_Click(object sender, EventArgs e)
         {
-            txtOutput.AppendText("-");  // Adds '-' to textbox
+            txtOutput.AppendText("—");  // Adds '-' to textbox //em— en-
         }
         /// <summary>
         /// Button Pressed
@@ -187,7 +271,15 @@ namespace Calculator
         /// </summary>
         private void btnSign_Click(object sender, EventArgs e)
         {
-            txtOutput.AppendText("±");
+            txtOutput.AppendText("-");
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds '^' to textbox
+        /// </summary>
+        private void btnExponent_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("^");
         }
         #endregion
         /*********************************
@@ -247,14 +339,10 @@ namespace Calculator
                 {
                     result.Add(stack.Pop()); // add them to results
                 }
-                foreach (string ch in result) {
-                    Console.WriteLine(ch);
-                }
                 if (result.Contains("(")) { // checks if original equation only had one open parenthesis
                     txtOutput.Text = "Syntax Error";
                     return new List<string>();
-                }//±
-
+                }
                 return result;
             }
             catch (Exception err) {
@@ -271,7 +359,7 @@ namespace Calculator
             try
             {
                 Stack stack = new Stack(); // temp stack
-                int a, b, ans; // first in stack, second in stack, some combination of the two
+                double a, b, ans; // first in stack, second in stack, some combination of the two
                 for (int i = 0; i < PostFix.Count; i++) // foreach character in postfix equation
                 {
                     string ch = PostFix[i]; // get character in equation
@@ -284,10 +372,13 @@ namespace Calculator
                         ans = a + b; // calculates first + second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
-                    else if (ch.Equals("-")) // if character is a '-' sign
+                    else if (ch.Equals("—")) // if character is a '-' sign
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
-                        string sb = (string)stack.Pop(); // get second number in stack
+                        string sb = "0";
+                        if (stack.Count != 0) {
+                            sb = (string)stack.Pop(); // get second number in stack
+                        }
                         a = Convert.ToInt32(sb); // convert string to int
                         b = Convert.ToInt32(sa); // convert string to int
                         ans = a - b; // calculates first - second
@@ -311,6 +402,14 @@ namespace Calculator
                         ans = a / b; // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
+                    else if (ch.Equals("^")) { // if character is a '^' sign
+                        string sa = (string)stack.Pop(); // get first number in stack
+                        string sb = (string)stack.Pop(); // get second number in stack
+                        a = Convert.ToInt32(sb); // convert string to int
+                        b = Convert.ToInt32(sa); // convert string to int
+                        ans = Math.Pow(a, b); // calculates first / second
+                        stack.Push(ans.ToString()); // adds answer to stack
+                    }
                     else // if character is a number
                     {
                         stack.Push(PostFix[i]); // add number to stack
@@ -318,6 +417,7 @@ namespace Calculator
 
                 }
                 return (string)stack.Pop(); // final nummber in stack is the answer
+                
             }
             catch (Exception err) {
                 txtOutput.Text = "Syntax Error"; // if for any reason an error was thrown, display syntax error
@@ -334,13 +434,15 @@ namespace Calculator
             switch (op)
             {
                 case "+":
-                case "-":
+                case "—":
                     return 1;
                 case "x":
                 case "/":
                     return 2;
                 case "^":
                     return 3;
+                case "-":
+                    return 4;
             }
             return -1;
         }
@@ -351,7 +453,7 @@ namespace Calculator
         /// <returns>List of strings, i.e. the tokenized equation</returns>
         public List<string> TokenizeEquation(string equation)
         {
-            var delimiters = new[] { '(', '+', '-', 'x', '/', ')' }; // list of delimiters to separate from
+            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^' }; // list of delimiters to separate from
             var buffer = string.Empty; // buffer currently set to empty, used to determine large numbers
             var result = new List<string>(); // results
             foreach (var ch in equation) // for each character in the equation
@@ -370,6 +472,7 @@ namespace Calculator
             if (buffer.Length > 0) result.Add(buffer); // add buffer to results
             return result;
         }
+
         #endregion
 
         

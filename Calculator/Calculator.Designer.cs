@@ -141,7 +141,7 @@
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(70, 50);
             this.btnSign.TabIndex = 8;
-            this.btnSign.Text = "+/-";
+            this.btnSign.Text = "(-)";
             this.btnSign.UseVisualStyleBackColor = true;
             this.btnSign.Click += new System.EventHandler(this.btnSign_Click);
             // 
@@ -273,6 +273,7 @@
             this.btnExponent.TabIndex = 20;
             this.btnExponent.Text = "^";
             this.btnExponent.UseVisualStyleBackColor = true;
+            this.btnExponent.Click += new System.EventHandler(this.btnExponent_Click);
             // 
             // btnCloseSoft
             // 
@@ -395,6 +396,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Calculator";
             this.Text = "Form1";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Main_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Main_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
