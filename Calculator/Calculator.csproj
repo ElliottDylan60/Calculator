@@ -52,6 +52,7 @@
     <Compile Include="Button_WOC.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Calc.cs" />
     <Compile Include="Calculator.cs">
       <SubType>Form</SubType>
     </Compile>

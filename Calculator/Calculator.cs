@@ -486,10 +486,7 @@ namespace Calculator
                 double a, b, ans; // first in stack, second in stack, some combination of the two
                 for (int i = 0; i < PostFix.Count; i++) // foreach character in postfix equation
                 {
-
                     string ch = PostFix[i]; // get character in equation
-
-
                     if (ch.Equals("+")) // if character is a '+' sign
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
@@ -557,7 +554,8 @@ namespace Calculator
                             a = Convert.ToDouble(sa);
                             ans = Math.Sin(a);
                         }
-                        else {
+                        else
+                        {
                             string sa = (string)stack.Pop();
                             a = Convert.ToDouble(sa);
                             ans = Math.Sin((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
@@ -600,6 +598,12 @@ namespace Calculator
                         ans = Math.Round(ans, 3);
                         stack.Push(ans.ToString());
                     }
+                    else if (ch.Equals("-")) {
+                        string sa = (string)stack.Pop();
+                        a = Convert.ToDouble(sa);
+                        ans = -a;
+                        stack.Push(ans.ToString());
+                    }
                     else // if character is a number
                     {
                         stack.Push(PostFix[i]); // add number to stack
@@ -607,7 +611,7 @@ namespace Calculator
 
 
                 }
-                return (string)stack.Pop(); // final nummber in stack is the answer
+                return (string)stack.Pop(); // final number in stack is the answer
                 
             }
             catch (Exception err) {
