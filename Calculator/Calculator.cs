@@ -25,6 +25,11 @@ namespace Calculator
         /// </summary>
         private Point lastLocation;
         /// <summary>
+        /// Determines whether or not to calculate trig functions
+        /// in radians or degrees
+        /// </summary>
+        private bool inDeg = true;
+        /// <summary>
         /// Format all Error Messages to look alike
         /// </summary>
         /// <param name="ErrorCode">Error Code, can be looked up at end of Form1.cs</param>
@@ -50,7 +55,7 @@ namespace Calculator
         }
         private void Calculator_Load(object sender, EventArgs e)
         {
-
+            btnExponent.Text = "x\u207f";
         }
         /*************************
                Drag and Drop
@@ -108,6 +113,64 @@ namespace Calculator
         /*****************
               BUTTONS
         ******************/
+        #region FormButtons
+        /// <summary>
+        /// Button Pressed
+        /// 
+        /// Hides some form elements and expands a panel
+        /// 
+        /// uses guna2 to animage
+        /// </summary>
+        private void btnOpenPanel_Click(object sender, EventArgs e)
+        {
+            ExtraPanel.Visible = false; // Hide Panel
+            btnOpenPanel.Visible = false; // Hides "Open Panel" Button
+            ExtraPanel.Width = 288; // Change Panel Width
+            guna2Transition1.ShowSync(ExtraPanel); // Shows Panel with cool animation
+        }
+        /// <summary>
+        /// Button Pressed
+        /// 
+        /// Hides/Shows form elements and collapses a panel
+        /// 
+        /// Uses guna2 to animate
+        /// </summary>
+        private void btnClosePanel_Click(object sender, EventArgs e)
+        {
+            ExtraPanel.Visible = false; // Hides Panel
+            btnOpenPanel.Visible = true; // Shows "Open Panel" button
+            ExtraPanel.Width = 82; // Changes Panel Width
+            guna2Transition1.ShowSync(ExtraPanel); // Collapses Panel with cool animation
+        }
+        /// <summary>
+        /// Calculates Trig functions in Degrees
+        /// </summary>
+        private void btnDeg_Click(object sender, EventArgs e)
+        {
+            // Show btnDeg is selected
+            btnDeg.TextColor = Color.White;
+            btnDeg.ButtonColor = Color.FromArgb(43, 105, 255);
+            // show btnRad has been switch / deselected
+            btnRad.TextColor = Color.Black;
+            btnRad.ButtonColor = Color.White;
+
+            inDeg = true;
+        }
+        /// <summary>
+        /// Calculates Trig functions in Radians
+        /// </summary>
+        private void btnRad_Click(object sender, EventArgs e)
+        {
+            // Show btnRad is selected
+            btnRad.TextColor = Color.White;
+            btnRad.ButtonColor = Color.FromArgb(43, 105, 255);
+            // show btnDeg has been switch / deselected
+            btnDeg.TextColor = Color.Black;
+            btnDeg.ButtonColor = Color.White;
+
+            inDeg = false;
+        }
+        #endregion
         #region numbers
         /// <summary>
         /// Button Pressed
@@ -286,6 +349,54 @@ namespace Calculator
         {
             txtOutput.AppendText("^");
         }
+        /// <summary>
+        /// Button Pressed
+        /// Adds '.' to textbox
+        /// </summary>
+        private void btnDecimal_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText(".");
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'sin(' to textbox
+        /// </summary>
+        private void btnSin_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("sin(");
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'cos(' to textbox
+        /// </summary>
+        private void btnCos_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("cos(");
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'tan(' to textbox
+        /// </summary>
+        private void btnTan_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("tan(");
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'log(' to textbox
+        /// </summary>
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("log(");
+        }
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'ln(' to textbox
+        /// </summary>
+        private void btnLn_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("ln(");
+        }
         #endregion
         /*********************************
               Shunting-yard Algorithm
@@ -293,6 +404,8 @@ namespace Calculator
         #region shunting-yard Algorithm
         /// <summary>
         /// Converts Infix equation to a Postfix equation
+        /// Original sample came from GeeksForGeeks, More understanding and
+        /// conteptual ideas from Comp Sci in 5 from Youtube
         /// </summary>
         /// <param name="inFix">Tokenized original equation</param>
         /// <returns>Tokenized Infix equation</returns>
@@ -316,7 +429,7 @@ namespace Calculator
                     }
                     else if (ch == ")") // if closed parenthesis
                     {
-                        while (stack.Count > 0 && stack.Peek() != "(") // while the stack has items, check for closing parenthesis
+                        while (stack.Count > 0 && stack.Peek() != "(") // while the stack has items and the item is not a closing bracket
                         {
                             result.Add(stack.Pop()); // add non-parehtnesis functions to results
 
@@ -357,6 +470,8 @@ namespace Calculator
         }
         /// <summary>
         /// Evaluates a Postfix Equation
+        /// Original sample came from GeeksForGeeks, More understanding and
+        /// conteptual ideas from Comp Sci in 5 from Youtube
         /// </summary>
         /// <param name="PostFix">Postfix equation given as a token</param>
         /// <returns>number result of postfix equation</returns>
@@ -367,7 +482,10 @@ namespace Calculator
                 double a, b, ans; // first in stack, second in stack, some combination of the two
                 for (int i = 0; i < PostFix.Count; i++) // foreach character in postfix equation
                 {
+
                     string ch = PostFix[i]; // get character in equation
+
+
                     if (ch.Equals("+")) // if character is a '+' sign
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
@@ -380,10 +498,7 @@ namespace Calculator
                     else if (ch.Equals("—")) // if character is a '-' sign
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
-                        string sb = "0";
-                        if (stack.Count != 0) {
-                            sb = (string)stack.Pop(); // get second number in stack
-                        }
+                        string sb = (string)stack.Pop();
                         a = Convert.ToInt32(sb); // convert string to int
                         b = Convert.ToInt32(sa); // convert string to int
                         ans = a - b; // calculates first - second
@@ -407,13 +522,79 @@ namespace Calculator
                         ans = a / b; // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
-                    else if (ch.Equals("^")) { // if character is a '^' sign
+                    else if (ch.Equals("^"))
+                    { // if character is a '^' sign
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop(); // get second number in stack
                         a = Convert.ToInt32(sb); // convert string to int
                         b = Convert.ToInt32(sa); // convert string to int
                         ans = Math.Pow(a, b); // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
+                    }
+                    else if (ch.Equals("ln"))
+                    {
+                        string sa = (string)stack.Pop();
+                        a = Convert.ToInt32(sa);
+                        ans = Math.Log(a);
+                        stack.Push(ans.ToString());
+                    }
+                    else if (ch.Equals("log"))
+                    {
+                        string sa = (string)stack.Pop();
+                        a = Convert.ToInt32(sa);
+                        ans = Math.Log(a, 10);
+                        stack.Push(ans.ToString());
+                    }
+                    else if (ch.Equals("sin"))
+                    {
+                        if (inDeg)
+                        {
+                            string sa = (string)stack.Pop();
+                            a = Convert.ToInt32(sa);
+                            ans = Math.Sin(a);
+                            stack.Push(ans.ToString());
+                        }
+                        else {
+                            string sa = (string)stack.Pop();
+                            a = Convert.ToInt32(sa);
+                            ans = Math.Sin((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
+                            stack.Push(ans.ToString());
+                        }
+                        
+                    }
+                    else if (ch.Equals("cos"))
+                    {
+                        if (inDeg)
+                        {
+                            string sa = (string)stack.Pop();
+                            a = Convert.ToInt32(sa);
+                            ans = Math.Cos(a);
+                            stack.Push(ans.ToString());
+                        }
+                        else
+                        {
+                            string sa = (string)stack.Pop();
+                            a = Convert.ToInt32(sa);
+                            ans = Math.Cos((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
+                            stack.Push(ans.ToString());
+                        }
+                    }
+                    else if (ch.Equals("tan"))
+                    {
+                        if (inDeg)
+                        {
+                            string sa = (string)stack.Pop();
+                            a = Convert.ToInt32(sa);
+                            ans = Math.Tan(a);
+                            stack.Push(ans.ToString());
+                        }
+                        else
+                        {
+                            string sa = (string)stack.Pop();
+                            a = Convert.ToInt32(sa);
+                            ans = Math.Tan((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
+                            stack.Push(ans.ToString());
+                        }
                     }
                     else // if character is a number
                     {
@@ -453,21 +634,25 @@ namespace Calculator
         }
         /// <summary>
         /// Tokenizes the equation to solve large and complex numbers/equations
+        /// 
+        /// We Tokenize large number (i.e. 100) all as one token (['100']) vs tokenizing
+        /// them as three seperate tokens (['1', '0', '0']) Otherwise the program
+        /// Will think this is three seperate numbers
         /// </summary>
         /// <param name="equation">Equatoin to be tokenized</param>
         /// <returns>List of strings, i.e. the tokenized equation</returns>
         public List<string> TokenizeEquation(string equation)
         {
-            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^' }; // list of delimiters to separate from
-            var buffer = string.Empty; // buffer currently set to empty, used to determine large numbers
-            var result = new List<string>(); // results
+            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^',}; // list of delimiters to separate from
+            var buffer = ""; // buffer currently set to empty, used to determine large numbers
+            var result = new List<string>(); // results stored as a list
             foreach (var ch in equation) // for each character in the equation
             {
                 if (delimiters.Contains(ch)) // if the character is a delimiter
                 {
                     if (buffer.Length > 0) result.Add(buffer); // add buffer to results
                     result.Add(ch.ToString()); // add character to results
-                    buffer = String.Empty; // clear buffer
+                    buffer = ""; // clear buffer
                 }
                 else // if character is a number
                 {
@@ -477,10 +662,7 @@ namespace Calculator
             if (buffer.Length > 0) result.Add(buffer); // add buffer to results
             return result;
         }
-
-
         #endregion
-
         
     }
 }

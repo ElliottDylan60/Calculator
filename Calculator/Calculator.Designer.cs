@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.btnEqual = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnSubtract = new System.Windows.Forms.Button();
-            this.btnMultiply = new System.Windows.Forms.Button();
-            this.btnDivide = new System.Windows.Forms.Button();
             this.btnDecimal = new System.Windows.Forms.Button();
             this.btn0 = new System.Windows.Forms.Button();
             this.btnSign = new System.Windows.Forms.Button();
@@ -45,24 +43,40 @@
             this.btn7 = new System.Windows.Forms.Button();
             this.btn8 = new System.Windows.Forms.Button();
             this.btn9 = new System.Windows.Forms.Button();
-            this.btnLn = new System.Windows.Forms.Button();
-            this.btnLog = new System.Windows.Forms.Button();
-            this.btnExponent = new System.Windows.Forms.Button();
             this.btnCloseSoft = new System.Windows.Forms.Button();
             this.btnOpenSoft = new System.Windows.Forms.Button();
-            this.btnSin = new System.Windows.Forms.Button();
-            this.btnCos = new System.Windows.Forms.Button();
-            this.btnTan = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.txtOutput = new System.Windows.Forms.TextBox();
+            this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnAdd = new System.Windows.Forms.Label();
+            this.btnSubtract = new System.Windows.Forms.Label();
+            this.btnMultiply = new System.Windows.Forms.Label();
+            this.btnDivide = new System.Windows.Forms.Label();
+            this.guna2Transition1 = new Guna.UI2.WinForms.Guna2Transition();
+            this.ExtraPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnExponent = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLn = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLog = new Guna.UI2.WinForms.Guna2Button();
+            this.btnTan = new Guna.UI2.WinForms.Guna2Button();
+            this.btnCos = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSin = new Guna.UI2.WinForms.Guna2Button();
+            this.btnClosePanel = new System.Windows.Forms.Label();
+            this.btnOpenPanel = new System.Windows.Forms.Label();
+            this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
+            this.btnRad = new ePOSOne.btnProduct.Button_WOC();
+            this.btnDeg = new ePOSOne.btnProduct.Button_WOC();
             this.button_WOC1 = new ePOSOne.btnProduct.Button_WOC();
+            this.btnBack = new ePOSOne.btnProduct.Button_WOC();
+            this.btnClear = new ePOSOne.btnProduct.Button_WOC();
+            this.guna2CustomGradientPanel1.SuspendLayout();
+            this.ExtraPanel.SuspendLayout();
+            this.guna2ShadowPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEqual
             // 
-            this.btnEqual.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnEqual.Location = new System.Drawing.Point(314, 373);
+            this.guna2Transition1.SetDecoration(this.btnEqual, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnEqual.Location = new System.Drawing.Point(204, 404);
             this.btnEqual.Name = "btnEqual";
             this.btnEqual.Size = new System.Drawing.Size(70, 50);
             this.btnEqual.TabIndex = 1;
@@ -70,64 +84,23 @@
             this.btnEqual.UseVisualStyleBackColor = true;
             this.btnEqual.Click += new System.EventHandler(this.btnEqual_Click);
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnAdd.Location = new System.Drawing.Point(314, 317);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(70, 50);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "+";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnSubtract
-            // 
-            this.btnSubtract.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnSubtract.Location = new System.Drawing.Point(314, 261);
-            this.btnSubtract.Name = "btnSubtract";
-            this.btnSubtract.Size = new System.Drawing.Size(70, 50);
-            this.btnSubtract.TabIndex = 3;
-            this.btnSubtract.Text = "-";
-            this.btnSubtract.UseVisualStyleBackColor = true;
-            this.btnSubtract.Click += new System.EventHandler(this.btnSubtract_Click);
-            // 
-            // btnMultiply
-            // 
-            this.btnMultiply.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnMultiply.Location = new System.Drawing.Point(314, 205);
-            this.btnMultiply.Name = "btnMultiply";
-            this.btnMultiply.Size = new System.Drawing.Size(70, 50);
-            this.btnMultiply.TabIndex = 4;
-            this.btnMultiply.Text = "x";
-            this.btnMultiply.UseVisualStyleBackColor = true;
-            this.btnMultiply.Click += new System.EventHandler(this.btnMultiply_Click);
-            // 
-            // btnDivide
-            // 
-            this.btnDivide.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnDivide.Location = new System.Drawing.Point(314, 149);
-            this.btnDivide.Name = "btnDivide";
-            this.btnDivide.Size = new System.Drawing.Size(70, 50);
-            this.btnDivide.TabIndex = 5;
-            this.btnDivide.Text = "/";
-            this.btnDivide.UseVisualStyleBackColor = true;
-            this.btnDivide.Click += new System.EventHandler(this.btnDivide_Click);
-            // 
             // btnDecimal
             // 
-            this.btnDecimal.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnDecimal.Location = new System.Drawing.Point(238, 373);
+            this.guna2Transition1.SetDecoration(this.btnDecimal, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnDecimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnDecimal.Location = new System.Drawing.Point(204, 180);
             this.btnDecimal.Name = "btnDecimal";
             this.btnDecimal.Size = new System.Drawing.Size(70, 50);
             this.btnDecimal.TabIndex = 6;
             this.btnDecimal.Text = ".";
             this.btnDecimal.UseVisualStyleBackColor = true;
+            this.btnDecimal.Click += new System.EventHandler(this.btnDecimal_Click);
             // 
             // btn0
             // 
-            this.btn0.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn0.Location = new System.Drawing.Point(162, 373);
+            this.guna2Transition1.SetDecoration(this.btn0, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn0.Location = new System.Drawing.Point(128, 404);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(70, 50);
             this.btn0.TabIndex = 7;
@@ -137,8 +110,9 @@
             // 
             // btnSign
             // 
-            this.btnSign.Font = new System.Drawing.Font("Source Code Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSign.Location = new System.Drawing.Point(86, 373);
+            this.guna2Transition1.SetDecoration(this.btnSign, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSign.Location = new System.Drawing.Point(52, 404);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(70, 50);
             this.btnSign.TabIndex = 8;
@@ -148,8 +122,9 @@
             // 
             // btn1
             // 
-            this.btn1.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn1.Location = new System.Drawing.Point(86, 317);
+            this.guna2Transition1.SetDecoration(this.btn1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn1.Location = new System.Drawing.Point(52, 348);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(70, 50);
             this.btn1.TabIndex = 9;
@@ -159,8 +134,9 @@
             // 
             // btn2
             // 
-            this.btn2.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn2.Location = new System.Drawing.Point(162, 317);
+            this.guna2Transition1.SetDecoration(this.btn2, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn2.Location = new System.Drawing.Point(128, 348);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(70, 50);
             this.btn2.TabIndex = 10;
@@ -170,8 +146,9 @@
             // 
             // btn3
             // 
-            this.btn3.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn3.Location = new System.Drawing.Point(238, 317);
+            this.guna2Transition1.SetDecoration(this.btn3, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn3.Location = new System.Drawing.Point(204, 348);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(70, 50);
             this.btn3.TabIndex = 11;
@@ -181,8 +158,9 @@
             // 
             // btn6
             // 
-            this.btn6.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn6.Location = new System.Drawing.Point(238, 261);
+            this.guna2Transition1.SetDecoration(this.btn6, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn6.Location = new System.Drawing.Point(204, 292);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(70, 50);
             this.btn6.TabIndex = 12;
@@ -192,8 +170,9 @@
             // 
             // btn5
             // 
-            this.btn5.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn5.Location = new System.Drawing.Point(162, 261);
+            this.guna2Transition1.SetDecoration(this.btn5, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn5.Location = new System.Drawing.Point(128, 292);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(70, 50);
             this.btn5.TabIndex = 13;
@@ -203,8 +182,9 @@
             // 
             // btn4
             // 
-            this.btn4.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn4.Location = new System.Drawing.Point(86, 261);
+            this.guna2Transition1.SetDecoration(this.btn4, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn4.Location = new System.Drawing.Point(52, 292);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(70, 50);
             this.btn4.TabIndex = 14;
@@ -214,8 +194,9 @@
             // 
             // btn7
             // 
-            this.btn7.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn7.Location = new System.Drawing.Point(86, 205);
+            this.guna2Transition1.SetDecoration(this.btn7, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn7.Location = new System.Drawing.Point(52, 236);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(70, 50);
             this.btn7.TabIndex = 15;
@@ -225,8 +206,9 @@
             // 
             // btn8
             // 
-            this.btn8.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn8.Location = new System.Drawing.Point(162, 205);
+            this.guna2Transition1.SetDecoration(this.btn8, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn8.Location = new System.Drawing.Point(128, 236);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(70, 50);
             this.btn8.TabIndex = 16;
@@ -236,8 +218,9 @@
             // 
             // btn9
             // 
-            this.btn9.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btn9.Location = new System.Drawing.Point(238, 205);
+            this.guna2Transition1.SetDecoration(this.btn9, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btn9.Location = new System.Drawing.Point(204, 236);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(70, 50);
             this.btn9.TabIndex = 17;
@@ -245,41 +228,11 @@
             this.btn9.UseVisualStyleBackColor = true;
             this.btn9.Click += new System.EventHandler(this.btn9_Click);
             // 
-            // btnLn
-            // 
-            this.btnLn.Font = new System.Drawing.Font("Source Code Pro", 18F);
-            this.btnLn.Location = new System.Drawing.Point(10, 373);
-            this.btnLn.Name = "btnLn";
-            this.btnLn.Size = new System.Drawing.Size(70, 50);
-            this.btnLn.TabIndex = 18;
-            this.btnLn.Text = "ln";
-            this.btnLn.UseVisualStyleBackColor = true;
-            // 
-            // btnLog
-            // 
-            this.btnLog.Font = new System.Drawing.Font("Source Code Pro", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLog.Location = new System.Drawing.Point(10, 317);
-            this.btnLog.Name = "btnLog";
-            this.btnLog.Size = new System.Drawing.Size(70, 50);
-            this.btnLog.TabIndex = 19;
-            this.btnLog.Text = "log";
-            this.btnLog.UseVisualStyleBackColor = true;
-            // 
-            // btnExponent
-            // 
-            this.btnExponent.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnExponent.Location = new System.Drawing.Point(238, 149);
-            this.btnExponent.Name = "btnExponent";
-            this.btnExponent.Size = new System.Drawing.Size(70, 50);
-            this.btnExponent.TabIndex = 20;
-            this.btnExponent.Text = "^";
-            this.btnExponent.UseVisualStyleBackColor = true;
-            this.btnExponent.Click += new System.EventHandler(this.btnExponent_Click);
-            // 
             // btnCloseSoft
             // 
-            this.btnCloseSoft.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnCloseSoft.Location = new System.Drawing.Point(162, 149);
+            this.guna2Transition1.SetDecoration(this.btnCloseSoft, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnCloseSoft.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnCloseSoft.Location = new System.Drawing.Point(128, 180);
             this.btnCloseSoft.Name = "btnCloseSoft";
             this.btnCloseSoft.Size = new System.Drawing.Size(70, 50);
             this.btnCloseSoft.TabIndex = 21;
@@ -289,8 +242,9 @@
             // 
             // btnOpenSoft
             // 
-            this.btnOpenSoft.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnOpenSoft.Location = new System.Drawing.Point(86, 149);
+            this.guna2Transition1.SetDecoration(this.btnOpenSoft, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnOpenSoft.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnOpenSoft.Location = new System.Drawing.Point(52, 180);
             this.btnOpenSoft.Name = "btnOpenSoft";
             this.btnOpenSoft.Size = new System.Drawing.Size(70, 50);
             this.btnOpenSoft.TabIndex = 22;
@@ -298,107 +252,407 @@
             this.btnOpenSoft.UseVisualStyleBackColor = true;
             this.btnOpenSoft.Click += new System.EventHandler(this.btnOpenSoft_Click);
             // 
-            // btnSin
+            // txtOutput
             // 
-            this.btnSin.Font = new System.Drawing.Font("Source Code Pro", 18F);
-            this.btnSin.Location = new System.Drawing.Point(10, 262);
-            this.btnSin.Name = "btnSin";
-            this.btnSin.Size = new System.Drawing.Size(70, 50);
-            this.btnSin.TabIndex = 23;
-            this.btnSin.Text = "sin";
-            this.btnSin.UseVisualStyleBackColor = true;
+            this.txtOutput.BackColor = System.Drawing.Color.White;
+            this.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtOutput.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.txtOutput, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOutput.ForeColor = System.Drawing.Color.Black;
+            this.txtOutput.Location = new System.Drawing.Point(20, 31);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
+            this.txtOutput.Size = new System.Drawing.Size(325, 40);
+            this.txtOutput.TabIndex = 28;
+            this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnCos
+            // guna2CustomGradientPanel1
             // 
-            this.btnCos.Font = new System.Drawing.Font("Source Code Pro", 18F);
-            this.btnCos.Location = new System.Drawing.Point(10, 205);
-            this.btnCos.Name = "btnCos";
-            this.btnCos.Size = new System.Drawing.Size(70, 50);
-            this.btnCos.TabIndex = 24;
-            this.btnCos.Text = "cos";
-            this.btnCos.UseVisualStyleBackColor = true;
+            this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.White;
+            this.guna2CustomGradientPanel1.BorderRadius = 40;
+            this.guna2CustomGradientPanel1.Controls.Add(this.btnAdd);
+            this.guna2CustomGradientPanel1.Controls.Add(this.btnSubtract);
+            this.guna2CustomGradientPanel1.Controls.Add(this.btnMultiply);
+            this.guna2CustomGradientPanel1.Controls.Add(this.btnDivide);
+            this.guna2Transition1.SetDecoration(this.guna2CustomGradientPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(280, 155);
+            this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(200, 274);
+            this.guna2CustomGradientPanel1.TabIndex = 32;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.btnAdd, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(22, 207);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(50, 50);
+            this.btnAdd.TabIndex = 36;
+            this.btnAdd.Text = "+";
+            this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnSubtract
+            // 
+            this.btnSubtract.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.btnSubtract, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnSubtract.ForeColor = System.Drawing.Color.White;
+            this.btnSubtract.Location = new System.Drawing.Point(22, 147);
+            this.btnSubtract.Name = "btnSubtract";
+            this.btnSubtract.Size = new System.Drawing.Size(50, 50);
+            this.btnSubtract.TabIndex = 35;
+            this.btnSubtract.Text = "-";
+            this.btnSubtract.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnSubtract.Click += new System.EventHandler(this.btnSubtract_Click);
+            // 
+            // btnMultiply
+            // 
+            this.btnMultiply.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.btnMultiply, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnMultiply.ForeColor = System.Drawing.Color.White;
+            this.btnMultiply.Location = new System.Drawing.Point(22, 82);
+            this.btnMultiply.Name = "btnMultiply";
+            this.btnMultiply.Size = new System.Drawing.Size(50, 50);
+            this.btnMultiply.TabIndex = 34;
+            this.btnMultiply.Text = "x";
+            this.btnMultiply.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnMultiply.Click += new System.EventHandler(this.btnMultiply_Click);
+            // 
+            // btnDivide
+            // 
+            this.btnDivide.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.btnDivide, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnDivide.ForeColor = System.Drawing.Color.White;
+            this.btnDivide.Location = new System.Drawing.Point(22, 17);
+            this.btnDivide.Name = "btnDivide";
+            this.btnDivide.Size = new System.Drawing.Size(50, 50);
+            this.btnDivide.TabIndex = 33;
+            this.btnDivide.Text = "/";
+            this.btnDivide.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnDivide.Click += new System.EventHandler(this.btnDivide_Click);
+            // 
+            // guna2Transition1
+            // 
+            this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.HorizSlide;
+            this.guna2Transition1.Cursor = null;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation1;
+            // 
+            // ExtraPanel
+            // 
+            this.ExtraPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ExtraPanel.BorderColor = System.Drawing.Color.Transparent;
+            this.ExtraPanel.BorderRadius = 40;
+            this.ExtraPanel.Controls.Add(this.btnExponent);
+            this.ExtraPanel.Controls.Add(this.btnLn);
+            this.ExtraPanel.Controls.Add(this.btnLog);
+            this.ExtraPanel.Controls.Add(this.btnTan);
+            this.ExtraPanel.Controls.Add(this.btnCos);
+            this.ExtraPanel.Controls.Add(this.btnSin);
+            this.ExtraPanel.Controls.Add(this.btnClosePanel);
+            this.ExtraPanel.Controls.Add(this.btnOpenPanel);
+            this.ExtraPanel.CustomBorderColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.ExtraPanel, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.ExtraPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.ExtraPanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.ExtraPanel.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.ExtraPanel.Location = new System.Drawing.Point(-36, 153);
+            this.ExtraPanel.Name = "ExtraPanel";
+            this.ExtraPanel.Size = new System.Drawing.Size(82, 274);
+            this.ExtraPanel.TabIndex = 37;
+            // 
+            // btnExponent
+            // 
+            this.guna2Transition1.SetDecoration(this.btnExponent, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnExponent.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExponent.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExponent.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExponent.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnExponent.ForeColor = System.Drawing.Color.White;
+            this.btnExponent.Location = new System.Drawing.Point(161, 188);
+            this.btnExponent.Name = "btnExponent";
+            this.btnExponent.Size = new System.Drawing.Size(70, 50);
+            this.btnExponent.TabIndex = 45;
+            this.btnExponent.Click += new System.EventHandler(this.btnExponent_Click);
+            // 
+            // btnLn
+            // 
+            this.guna2Transition1.SetDecoration(this.btnLn, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnLn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLn.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnLn.ForeColor = System.Drawing.Color.White;
+            this.btnLn.Location = new System.Drawing.Point(85, 188);
+            this.btnLn.Name = "btnLn";
+            this.btnLn.Size = new System.Drawing.Size(70, 50);
+            this.btnLn.TabIndex = 44;
+            this.btnLn.Text = "ln";
+            this.btnLn.Click += new System.EventHandler(this.btnLn_Click);
+            // 
+            // btnLog
+            // 
+            this.guna2Transition1.SetDecoration(this.btnLog, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnLog.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLog.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLog.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLog.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnLog.ForeColor = System.Drawing.Color.White;
+            this.btnLog.Location = new System.Drawing.Point(161, 112);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(70, 50);
+            this.btnLog.TabIndex = 43;
+            this.btnLog.Text = "log";
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
             // 
             // btnTan
             // 
-            this.btnTan.Font = new System.Drawing.Font("Source Code Pro", 18F);
-            this.btnTan.Location = new System.Drawing.Point(10, 149);
+            this.guna2Transition1.SetDecoration(this.btnTan, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnTan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnTan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnTan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnTan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnTan.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnTan.ForeColor = System.Drawing.Color.White;
+            this.btnTan.Location = new System.Drawing.Point(85, 112);
             this.btnTan.Name = "btnTan";
             this.btnTan.Size = new System.Drawing.Size(70, 50);
-            this.btnTan.TabIndex = 25;
+            this.btnTan.TabIndex = 42;
             this.btnTan.Text = "tan";
-            this.btnTan.UseVisualStyleBackColor = true;
+            this.btnTan.Click += new System.EventHandler(this.btnTan_Click);
             // 
-            // btnBack
+            // btnCos
             // 
-            this.btnBack.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
-            this.btnBack.Location = new System.Drawing.Point(314, 93);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(70, 50);
-            this.btnBack.TabIndex = 26;
-            this.btnBack.Text = "<";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.guna2Transition1.SetDecoration(this.btnCos, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnCos.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnCos.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnCos.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnCos.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnCos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCos.ForeColor = System.Drawing.Color.White;
+            this.btnCos.Location = new System.Drawing.Point(161, 37);
+            this.btnCos.Name = "btnCos";
+            this.btnCos.Size = new System.Drawing.Size(70, 50);
+            this.btnCos.TabIndex = 41;
+            this.btnCos.Text = "cos";
+            this.btnCos.Click += new System.EventHandler(this.btnCos_Click);
             // 
-            // btnClear
+            // btnSin
             // 
-            this.btnClear.Font = new System.Drawing.Font("Source Code Pro", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(238, 93);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(70, 50);
-            this.btnClear.TabIndex = 27;
-            this.btnClear.Text = "C";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.guna2Transition1.SetDecoration(this.btnSin, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnSin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSin.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btnSin.ForeColor = System.Drawing.Color.White;
+            this.btnSin.Location = new System.Drawing.Point(85, 37);
+            this.btnSin.Name = "btnSin";
+            this.btnSin.Size = new System.Drawing.Size(70, 50);
+            this.btnSin.TabIndex = 40;
+            this.btnSin.Text = "sin";
+            this.btnSin.Click += new System.EventHandler(this.btnSin_Click);
             // 
-            // txtOutput
+            // btnClosePanel
             // 
-            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F);
-            this.txtOutput.Location = new System.Drawing.Point(12, 12);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(374, 47);
-            this.txtOutput.TabIndex = 28;
-            this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnClosePanel.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.btnClosePanel, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnClosePanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnClosePanel.ForeColor = System.Drawing.Color.White;
+            this.btnClosePanel.Location = new System.Drawing.Point(247, 112);
+            this.btnClosePanel.Name = "btnClosePanel";
+            this.btnClosePanel.Size = new System.Drawing.Size(50, 50);
+            this.btnClosePanel.TabIndex = 38;
+            this.btnClosePanel.Text = "<";
+            this.btnClosePanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnClosePanel.Click += new System.EventHandler(this.btnClosePanel_Click);
+            // 
+            // btnOpenPanel
+            // 
+            this.btnOpenPanel.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Transition1.SetDecoration(this.btnOpenPanel, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnOpenPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnOpenPanel.ForeColor = System.Drawing.Color.White;
+            this.btnOpenPanel.Location = new System.Drawing.Point(31, 112);
+            this.btnOpenPanel.Name = "btnOpenPanel";
+            this.btnOpenPanel.Size = new System.Drawing.Size(50, 50);
+            this.btnOpenPanel.TabIndex = 37;
+            this.btnOpenPanel.Text = ">";
+            this.btnOpenPanel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnOpenPanel.Click += new System.EventHandler(this.btnOpenPanel_Click);
+            // 
+            // guna2ShadowPanel1
+            // 
+            this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ShadowPanel1.Controls.Add(this.button_WOC1);
+            this.guna2ShadowPanel1.Controls.Add(this.txtOutput);
+            this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(-8, 0);
+            this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
+            this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.guna2ShadowPanel1.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.Dropped;
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(370, 112);
+            this.guna2ShadowPanel1.TabIndex = 38;
+            this.guna2ShadowPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Main_MouseDown);
+            this.guna2ShadowPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_MouseMove);
+            this.guna2ShadowPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Main_MouseUp);
+            // 
+            // btnRad
+            // 
+            this.btnRad.BackColor = System.Drawing.Color.White;
+            this.btnRad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRad.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnRad.ButtonColor = System.Drawing.Color.White;
+            this.btnRad.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnRad, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnRad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRad.ForeColor = System.Drawing.Color.White;
+            this.btnRad.Location = new System.Drawing.Point(136, 149);
+            this.btnRad.Name = "btnRad";
+            this.btnRad.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnRad.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnRad.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnRad.Size = new System.Drawing.Size(60, 30);
+            this.btnRad.TabIndex = 40;
+            this.btnRad.Text = "rad";
+            this.btnRad.TextColor = System.Drawing.Color.Black;
+            this.btnRad.UseVisualStyleBackColor = false;
+            this.btnRad.Click += new System.EventHandler(this.btnRad_Click);
+            // 
+            // btnDeg
+            // 
+            this.btnDeg.BackColor = System.Drawing.Color.White;
+            this.btnDeg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDeg.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnDeg, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnDeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeg.ForeColor = System.Drawing.Color.White;
+            this.btnDeg.Location = new System.Drawing.Point(136, 118);
+            this.btnDeg.Name = "btnDeg";
+            this.btnDeg.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnDeg.Size = new System.Drawing.Size(60, 30);
+            this.btnDeg.TabIndex = 39;
+            this.btnDeg.Text = "deg";
+            this.btnDeg.TextColor = System.Drawing.Color.White;
+            this.btnDeg.UseVisualStyleBackColor = false;
+            this.btnDeg.Click += new System.EventHandler(this.btnDeg_Click);
             // 
             // button_WOC1
             // 
             this.button_WOC1.BackColor = System.Drawing.Color.White;
-            this.button_WOC1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button_WOC1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.button_WOC1.ButtonColor = System.Drawing.Color.White;
+            this.button_WOC1.BackgroundImage = global::Calculator.Properties.Resources.History;
+            this.button_WOC1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button_WOC1.BorderColor = System.Drawing.Color.Transparent;
+            this.button_WOC1.ButtonColor = System.Drawing.Color.Transparent;
             this.button_WOC1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.button_WOC1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.button_WOC1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC1.Font = new System.Drawing.Font("Source Code Pro", 27.75F);
+            this.button_WOC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.button_WOC1.ForeColor = System.Drawing.Color.White;
-            this.button_WOC1.Location = new System.Drawing.Point(162, 93);
+            this.button_WOC1.Location = new System.Drawing.Point(324, 3);
             this.button_WOC1.Name = "button_WOC1";
-            this.button_WOC1.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.button_WOC1.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.button_WOC1.OnHoverTextColor = System.Drawing.Color.White;
-            this.button_WOC1.Size = new System.Drawing.Size(70, 50);
-            this.button_WOC1.TabIndex = 29;
-            this.button_WOC1.Text = "C";
+            this.button_WOC1.OnHoverBorderColor = System.Drawing.Color.Transparent;
+            this.button_WOC1.OnHoverButtonColor = System.Drawing.Color.Transparent;
+            this.button_WOC1.OnHoverTextColor = System.Drawing.Color.Black;
+            this.button_WOC1.Size = new System.Drawing.Size(30, 30);
+            this.button_WOC1.TabIndex = 39;
             this.button_WOC1.TextColor = System.Drawing.Color.Black;
             this.button_WOC1.UseVisualStyleBackColor = false;
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.White;
+            this.btnBack.BackgroundImage = global::Calculator.Properties.Resources.Back;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBack.BorderColor = System.Drawing.Color.Transparent;
+            this.btnBack.ButtonColor = System.Drawing.Color.Transparent;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnBack, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(204, 118);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.OnHoverBorderColor = System.Drawing.Color.Transparent;
+            this.btnBack.OnHoverButtonColor = System.Drawing.Color.Transparent;
+            this.btnBack.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnBack.Size = new System.Drawing.Size(70, 50);
+            this.btnBack.TabIndex = 30;
+            this.btnBack.TextColor = System.Drawing.Color.Black;
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.BackColor = System.Drawing.Color.White;
+            this.btnClear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnClear.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnClear.ButtonColor = System.Drawing.Color.White;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnClear, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.Location = new System.Drawing.Point(52, 118);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnClear.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnClear.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnClear.Size = new System.Drawing.Size(70, 50);
+            this.btnClear.TabIndex = 29;
+            this.btnClear.Text = "AC";
+            this.btnClear.TextColor = System.Drawing.Color.Black;
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(397, 437);
-            this.Controls.Add(this.button_WOC1);
-            this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.btnClear);
+            this.ClientSize = new System.Drawing.Size(349, 465);
+            this.Controls.Add(this.btnRad);
+            this.Controls.Add(this.btnDeg);
+            this.Controls.Add(this.guna2ShadowPanel1);
+            this.Controls.Add(this.ExtraPanel);
+            this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnTan);
-            this.Controls.Add(this.btnCos);
-            this.Controls.Add(this.btnSin);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnOpenSoft);
             this.Controls.Add(this.btnCloseSoft);
-            this.Controls.Add(this.btnExponent);
-            this.Controls.Add(this.btnLog);
-            this.Controls.Add(this.btnLn);
             this.Controls.Add(this.btn9);
             this.Controls.Add(this.btn8);
             this.Controls.Add(this.btn7);
@@ -411,11 +665,8 @@
             this.Controls.Add(this.btnSign);
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btnDecimal);
-            this.Controls.Add(this.btnDivide);
-            this.Controls.Add(this.btnMultiply);
-            this.Controls.Add(this.btnSubtract);
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnEqual);
+            this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Calculator";
             this.Text = "Form1";
@@ -423,17 +674,16 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Main_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Main_MouseUp);
+            this.guna2CustomGradientPanel1.ResumeLayout(false);
+            this.ExtraPanel.ResumeLayout(false);
+            this.guna2ShadowPanel1.ResumeLayout(false);
+            this.guna2ShadowPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnEqual;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnSubtract;
-        private System.Windows.Forms.Button btnMultiply;
-        private System.Windows.Forms.Button btnDivide;
         private System.Windows.Forms.Button btnDecimal;
         private System.Windows.Forms.Button btn0;
         private System.Windows.Forms.Button btnSign;
@@ -446,18 +696,30 @@
         private System.Windows.Forms.Button btn7;
         private System.Windows.Forms.Button btn8;
         private System.Windows.Forms.Button btn9;
-        private System.Windows.Forms.Button btnLn;
-        private System.Windows.Forms.Button btnLog;
-        private System.Windows.Forms.Button btnExponent;
         private System.Windows.Forms.Button btnCloseSoft;
         private System.Windows.Forms.Button btnOpenSoft;
-        private System.Windows.Forms.Button btnSin;
-        private System.Windows.Forms.Button btnCos;
-        private System.Windows.Forms.Button btnTan;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtOutput;
+        private ePOSOne.btnProduct.Button_WOC btnClear;
+        private ePOSOne.btnProduct.Button_WOC btnBack;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
+        private System.Windows.Forms.Label btnDivide;
+        private System.Windows.Forms.Label btnAdd;
+        private System.Windows.Forms.Label btnSubtract;
+        private System.Windows.Forms.Label btnMultiply;
+        private Guna.UI2.WinForms.Guna2Transition guna2Transition1;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel ExtraPanel;
+        private System.Windows.Forms.Label btnOpenPanel;
+        private System.Windows.Forms.Label btnClosePanel;
+        private Guna.UI2.WinForms.Guna2Button btnSin;
+        private Guna.UI2.WinForms.Guna2Button btnTan;
+        private Guna.UI2.WinForms.Guna2Button btnCos;
+        private Guna.UI2.WinForms.Guna2Button btnLn;
+        private Guna.UI2.WinForms.Guna2Button btnLog;
+        private Guna.UI2.WinForms.Guna2Button btnExponent;
+        private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
         private ePOSOne.btnProduct.Button_WOC button_WOC1;
+        private ePOSOne.btnProduct.Button_WOC btnDeg;
+        private ePOSOne.btnProduct.Button_WOC btnRad;
     }
 }
 
