@@ -23,7 +23,7 @@ namespace Calculator
         /// </summary>
         /// <param name="op">operator as a string</param>
         /// <returns>precendce score as a number</returns>
-        private int precedence(string op)
+        public int precedence(string op)
         {
             switch (op)
             {
@@ -49,7 +49,7 @@ namespace Calculator
         /// </summary>
         /// <param name="equation">Equatoin to be tokenized</param>
         /// <returns>List of strings, i.e. the tokenized equation</returns>
-        private List<string> TokenizeEquation(string equation)
+        public List<string> TokenizeEquation(string equation)
         {
             var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^', }; // list of delimiters to separate from
             var buffer = ""; // buffer currently set to empty, used to determine large numbers
@@ -77,7 +77,7 @@ namespace Calculator
         /// </summary>
         /// <param name="inFix">Tokenized original equation</param>
         /// <returns>Tokenized Infix equation</returns>
-        private List<string> toPostFix(List<string> inFix)
+        public List<string> toPostFix(List<string> inFix)
         {
             try
             {
@@ -145,7 +145,7 @@ namespace Calculator
         /// </summary>
         /// <param name="PostFix">Postfix equation given as a token</param>
         /// <returns>number result of postfix equation</returns>
-        private string PostFixEvaluator(List<string> PostFix)
+        public string PostFixEvaluator(List<string> PostFix)
         {
             try
             {
