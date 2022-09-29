@@ -28,7 +28,7 @@ namespace Calculator
         /// Determines whether or not to calculate trig functions
         /// in radians or degrees
         /// </summary>
-        private bool inDeg = true;
+        private bool inDeg = false;
         /// <summary>
         /// Format all Error Messages to look alike
         /// </summary>
@@ -38,7 +38,6 @@ namespace Calculator
         {
             try
             {
-
                 MessageBox.Show(a.Message + "\n" +
                                 "Error Code: " + ErrorCode + "\n" +
                                 "Line: " + LineNumber +
@@ -154,7 +153,7 @@ namespace Calculator
             btnRad.TextColor = Color.Black;
             btnRad.ButtonColor = Color.White;
 
-            inDeg = true;
+            inDeg = false;
         }
         /// <summary>
         /// Calculates Trig functions in Radians
@@ -168,7 +167,7 @@ namespace Calculator
             btnDeg.TextColor = Color.Black;
             btnDeg.ButtonColor = Color.White;
 
-            inDeg = false;
+            inDeg = true;
         }
         #endregion
         #region numbers
@@ -299,6 +298,10 @@ namespace Calculator
         private void btnEqual_Click(object sender, EventArgs e)
         {
             txtOutput.Text = PostFixEvaluator(toPostFix(TokenizeEquation(txtOutput.Text))); // Calculates and displays answer
+            /*
+            foreach (string ch in toPostFix(TokenizeEquation(txtOutput.Text))) {
+                Console.WriteLine(ch);
+            }*/
         }
         /// <summary>
         /// Button Pressed
@@ -322,7 +325,6 @@ namespace Calculator
         /// </summary>
         private void btnMultiply_Click(object sender, EventArgs e)
         {
-            txtOutput.ForeColor = Color.Red;
             txtOutput.AppendText("x");  // Adds 'x' to textbox
         }
         /// <summary>
@@ -417,8 +419,9 @@ namespace Calculator
                 for (int i = 0; i < inFix.Count; i++) // foreach character in tokenized infix equation
                 {
                     string ch = inFix[i]; // get character
-                    int chNum;
-                    bool isNum = Int32.TryParse(ch, out chNum); // check if character is a number
+                    double chNum;
+                    //bool isNum = Int32.TryParse(ch, out chNum); // check if character is a number
+                    bool isNum = Double.TryParse(ch, out chNum);
                     if (isNum) // if character is a number
                     {
                         result.Add(ch); // add character to results
@@ -464,6 +467,7 @@ namespace Calculator
                 return result;
             }
             catch (Exception err) {
+                MessageBox.Show(err.ToString());
                 txtOutput.Text = "Syntax Error"; // if for any reason an error was thrown, display syntax error
                 return new List<string>();
             }
@@ -490,8 +494,8 @@ namespace Calculator
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop(); // get second number in stack
-                        a = Convert.ToInt32(sb); // convert string to int
-                        b = Convert.ToInt32(sa); // convert string to int
+                        a = Convert.ToDouble(sb); // convert string to double
+                        b = Convert.ToDouble(sa); // convert string to double
                         ans = a + b; // calculates first + second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
@@ -499,8 +503,8 @@ namespace Calculator
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop();
-                        a = Convert.ToInt32(sb); // convert string to int
-                        b = Convert.ToInt32(sa); // convert string to int
+                        a = Convert.ToDouble(sb); // convert string to double
+                        b = Convert.ToDouble(sa); // convert string to double
                         ans = a - b; // calculates first - second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
@@ -508,8 +512,8 @@ namespace Calculator
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop(); // get second number in stack
-                        a = Convert.ToInt32(sb); // convert string to int
-                        b = Convert.ToInt32(sa); // convert string to int
+                        a = Convert.ToDouble(sb); // convert string to double
+                        b = Convert.ToDouble(sa); // convert string to double
                         ans = a * b; // calculates first x second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
@@ -517,8 +521,8 @@ namespace Calculator
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop(); // get second number in stack
-                        a = Convert.ToInt32(sb); // convert string to int
-                        b = Convert.ToInt32(sa); // convert string to int
+                        a = Convert.ToDouble(sb); // convert string to double
+                        b = Convert.ToDouble(sa); // convert string to double
                         ans = a / b; // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
@@ -526,22 +530,22 @@ namespace Calculator
                     { // if character is a '^' sign
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop(); // get second number in stack
-                        a = Convert.ToInt32(sb); // convert string to int
-                        b = Convert.ToInt32(sa); // convert string to int
+                        a = Convert.ToDouble(sb); // convert string to double
+                        b = Convert.ToDouble(sa); // convert string to double
                         ans = Math.Pow(a, b); // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
                     else if (ch.Equals("ln"))
                     {
-                        string sa = (string)stack.Pop();
-                        a = Convert.ToInt32(sa);
-                        ans = Math.Log(a);
-                        stack.Push(ans.ToString());
+                        string sa = (string)stack.Pop(); // get first number in stack
+                        a = Convert.ToDouble(sa); // convert string to double
+                        ans = Math.Log(a); // calculate log of number
+                        stack.Push(ans.ToString()); // push number to stack
                     }
                     else if (ch.Equals("log"))
                     {
                         string sa = (string)stack.Pop();
-                        a = Convert.ToInt32(sa);
+                        a = Convert.ToDouble(sa);
                         ans = Math.Log(a, 10);
                         stack.Push(ans.ToString());
                     }
@@ -550,62 +554,64 @@ namespace Calculator
                         if (inDeg)
                         {
                             string sa = (string)stack.Pop();
-                            a = Convert.ToInt32(sa);
+                            a = Convert.ToDouble(sa);
                             ans = Math.Sin(a);
-                            stack.Push(ans.ToString());
                         }
                         else {
                             string sa = (string)stack.Pop();
-                            a = Convert.ToInt32(sa);
+                            a = Convert.ToDouble(sa);
                             ans = Math.Sin((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
-                            stack.Push(ans.ToString());
                         }
-                        
+                        ans = Math.Round(ans, 3);
+                        stack.Push(ans.ToString());
+
                     }
                     else if (ch.Equals("cos"))
                     {
                         if (inDeg)
                         {
                             string sa = (string)stack.Pop();
-                            a = Convert.ToInt32(sa);
+                            a = Convert.ToDouble(sa);
                             ans = Math.Cos(a);
-                            stack.Push(ans.ToString());
                         }
                         else
                         {
                             string sa = (string)stack.Pop();
-                            a = Convert.ToInt32(sa);
+                            a = Convert.ToDouble(sa);
                             ans = Math.Cos((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
-                            stack.Push(ans.ToString());
                         }
+                        ans = Math.Round(ans, 3);
+                        stack.Push(ans.ToString());
                     }
                     else if (ch.Equals("tan"))
                     {
                         if (inDeg)
                         {
                             string sa = (string)stack.Pop();
-                            a = Convert.ToInt32(sa);
+                            a = Convert.ToDouble(sa);
                             ans = Math.Tan(a);
-                            stack.Push(ans.ToString());
                         }
                         else
                         {
                             string sa = (string)stack.Pop();
-                            a = Convert.ToInt32(sa);
+                            a = Convert.ToDouble(sa);
                             ans = Math.Tan((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
-                            stack.Push(ans.ToString());
                         }
+                        ans = Math.Round(ans, 3);
+                        stack.Push(ans.ToString());
                     }
                     else // if character is a number
                     {
                         stack.Push(PostFix[i]); // add number to stack
                     }
 
+
                 }
                 return (string)stack.Pop(); // final nummber in stack is the answer
                 
             }
             catch (Exception err) {
+                MessageBox.Show(err.ToString());
                 txtOutput.Text = "Syntax Error"; // if for any reason an error was thrown, display syntax error
                 return "Syntax Error";
             }
@@ -663,6 +669,5 @@ namespace Calculator
             return result;
         }
         #endregion
-        
     }
 }

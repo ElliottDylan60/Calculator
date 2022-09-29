@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation5 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnDecimal = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
             this.btnRad = new ePOSOne.btnProduct.Button_WOC();
             this.btnDeg = new ePOSOne.btnProduct.Button_WOC();
-            this.button_WOC1 = new ePOSOne.btnProduct.Button_WOC();
+            this.btnHistory = new ePOSOne.btnProduct.Button_WOC();
             this.btnBack = new ePOSOne.btnProduct.Button_WOC();
             this.btnClear = new ePOSOne.btnProduct.Button_WOC();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -76,7 +76,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btnEqual, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnEqual.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btnEqual.Location = new System.Drawing.Point(204, 404);
+            this.btnEqual.Location = new System.Drawing.Point(213, 408);
             this.btnEqual.Name = "btnEqual";
             this.btnEqual.Size = new System.Drawing.Size(70, 50);
             this.btnEqual.TabIndex = 1;
@@ -88,7 +88,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btnDecimal, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnDecimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btnDecimal.Location = new System.Drawing.Point(204, 180);
+            this.btnDecimal.Location = new System.Drawing.Point(213, 184);
             this.btnDecimal.Name = "btnDecimal";
             this.btnDecimal.Size = new System.Drawing.Size(70, 50);
             this.btnDecimal.TabIndex = 6;
@@ -100,7 +100,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn0, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn0.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn0.Location = new System.Drawing.Point(128, 404);
+            this.btn0.Location = new System.Drawing.Point(137, 408);
             this.btn0.Name = "btn0";
             this.btn0.Size = new System.Drawing.Size(70, 50);
             this.btn0.TabIndex = 7;
@@ -112,7 +112,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btnSign, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSign.Location = new System.Drawing.Point(52, 404);
+            this.btnSign.Location = new System.Drawing.Point(61, 408);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(70, 50);
             this.btnSign.TabIndex = 8;
@@ -124,7 +124,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn1.Location = new System.Drawing.Point(52, 348);
+            this.btn1.Location = new System.Drawing.Point(61, 352);
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(70, 50);
             this.btn1.TabIndex = 9;
@@ -136,7 +136,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn2, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn2.Location = new System.Drawing.Point(128, 348);
+            this.btn2.Location = new System.Drawing.Point(137, 352);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(70, 50);
             this.btn2.TabIndex = 10;
@@ -148,7 +148,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn3, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn3.Location = new System.Drawing.Point(204, 348);
+            this.btn3.Location = new System.Drawing.Point(213, 352);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(70, 50);
             this.btn3.TabIndex = 11;
@@ -160,7 +160,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn6, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn6.Location = new System.Drawing.Point(204, 292);
+            this.btn6.Location = new System.Drawing.Point(213, 296);
             this.btn6.Name = "btn6";
             this.btn6.Size = new System.Drawing.Size(70, 50);
             this.btn6.TabIndex = 12;
@@ -172,7 +172,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn5, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn5.Location = new System.Drawing.Point(128, 292);
+            this.btn5.Location = new System.Drawing.Point(137, 296);
             this.btn5.Name = "btn5";
             this.btn5.Size = new System.Drawing.Size(70, 50);
             this.btn5.TabIndex = 13;
@@ -184,7 +184,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn4, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn4.Location = new System.Drawing.Point(52, 292);
+            this.btn4.Location = new System.Drawing.Point(61, 296);
             this.btn4.Name = "btn4";
             this.btn4.Size = new System.Drawing.Size(70, 50);
             this.btn4.TabIndex = 14;
@@ -196,7 +196,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn7, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn7.Location = new System.Drawing.Point(52, 236);
+            this.btn7.Location = new System.Drawing.Point(61, 240);
             this.btn7.Name = "btn7";
             this.btn7.Size = new System.Drawing.Size(70, 50);
             this.btn7.TabIndex = 15;
@@ -208,7 +208,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn8, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn8.Location = new System.Drawing.Point(128, 236);
+            this.btn8.Location = new System.Drawing.Point(137, 240);
             this.btn8.Name = "btn8";
             this.btn8.Size = new System.Drawing.Size(70, 50);
             this.btn8.TabIndex = 16;
@@ -220,7 +220,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btn9, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btn9.Location = new System.Drawing.Point(204, 236);
+            this.btn9.Location = new System.Drawing.Point(213, 240);
             this.btn9.Name = "btn9";
             this.btn9.Size = new System.Drawing.Size(70, 50);
             this.btn9.TabIndex = 17;
@@ -232,7 +232,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btnCloseSoft, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnCloseSoft.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btnCloseSoft.Location = new System.Drawing.Point(128, 180);
+            this.btnCloseSoft.Location = new System.Drawing.Point(137, 184);
             this.btnCloseSoft.Name = "btnCloseSoft";
             this.btnCloseSoft.Size = new System.Drawing.Size(70, 50);
             this.btnCloseSoft.TabIndex = 21;
@@ -244,7 +244,7 @@
             // 
             this.guna2Transition1.SetDecoration(this.btnOpenSoft, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnOpenSoft.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btnOpenSoft.Location = new System.Drawing.Point(52, 180);
+            this.btnOpenSoft.Location = new System.Drawing.Point(61, 184);
             this.btnOpenSoft.Name = "btnOpenSoft";
             this.btnOpenSoft.Size = new System.Drawing.Size(70, 50);
             this.btnOpenSoft.TabIndex = 22;
@@ -260,7 +260,7 @@
             this.guna2Transition1.SetDecoration(this.txtOutput, Guna.UI2.AnimatorNS.DecorationType.None);
             this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.ForeColor = System.Drawing.Color.Black;
-            this.txtOutput.Location = new System.Drawing.Point(20, 31);
+            this.txtOutput.Location = new System.Drawing.Point(20, 45);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(325, 40);
@@ -279,9 +279,9 @@
             this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(280, 155);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(292, 155);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(200, 274);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(188, 274);
             this.guna2CustomGradientPanel1.TabIndex = 32;
             // 
             // btnAdd
@@ -290,7 +290,7 @@
             this.guna2Transition1.SetDecoration(this.btnAdd, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(22, 207);
+            this.btnAdd.Location = new System.Drawing.Point(10, 207);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(50, 50);
             this.btnAdd.TabIndex = 36;
@@ -304,7 +304,7 @@
             this.guna2Transition1.SetDecoration(this.btnSubtract, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnSubtract.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.btnSubtract.ForeColor = System.Drawing.Color.White;
-            this.btnSubtract.Location = new System.Drawing.Point(22, 147);
+            this.btnSubtract.Location = new System.Drawing.Point(10, 147);
             this.btnSubtract.Name = "btnSubtract";
             this.btnSubtract.Size = new System.Drawing.Size(50, 50);
             this.btnSubtract.TabIndex = 35;
@@ -318,7 +318,7 @@
             this.guna2Transition1.SetDecoration(this.btnMultiply, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnMultiply.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.btnMultiply.ForeColor = System.Drawing.Color.White;
-            this.btnMultiply.Location = new System.Drawing.Point(22, 82);
+            this.btnMultiply.Location = new System.Drawing.Point(10, 82);
             this.btnMultiply.Name = "btnMultiply";
             this.btnMultiply.Size = new System.Drawing.Size(50, 50);
             this.btnMultiply.TabIndex = 34;
@@ -332,7 +332,7 @@
             this.guna2Transition1.SetDecoration(this.btnDivide, Guna.UI2.AnimatorNS.DecorationType.None);
             this.btnDivide.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.btnDivide.ForeColor = System.Drawing.Color.White;
-            this.btnDivide.Location = new System.Drawing.Point(22, 17);
+            this.btnDivide.Location = new System.Drawing.Point(10, 17);
             this.btnDivide.Name = "btnDivide";
             this.btnDivide.Size = new System.Drawing.Size(50, 50);
             this.btnDivide.TabIndex = 33;
@@ -344,22 +344,22 @@
             // 
             this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.HorizSlide;
             this.guna2Transition1.Cursor = null;
-            animation1.AnimateOnlyDifferences = true;
-            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
-            animation1.LeafCoeff = 0F;
-            animation1.MaxTime = 1F;
-            animation1.MinTime = 0F;
-            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
-            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
-            animation1.MosaicSize = 0;
-            animation1.Padding = new System.Windows.Forms.Padding(0);
-            animation1.RotateCoeff = 0F;
-            animation1.RotateLimit = 0F;
-            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
-            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
-            animation1.TimeCoeff = 0F;
-            animation1.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation1;
+            animation5.AnimateOnlyDifferences = true;
+            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
+            animation5.LeafCoeff = 0F;
+            animation5.MaxTime = 1F;
+            animation5.MinTime = 0F;
+            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
+            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
+            animation5.MosaicSize = 0;
+            animation5.Padding = new System.Windows.Forms.Padding(0);
+            animation5.RotateCoeff = 0F;
+            animation5.RotateLimit = 0F;
+            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
+            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
+            animation5.TimeCoeff = 0F;
+            animation5.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation5;
             // 
             // ExtraPanel
             // 
@@ -510,7 +510,7 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.Controls.Add(this.button_WOC1);
+            this.guna2ShadowPanel1.Controls.Add(this.btnHistory);
             this.guna2ShadowPanel1.Controls.Add(this.txtOutput);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
@@ -535,7 +535,7 @@
             this.btnRad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRad.ForeColor = System.Drawing.Color.White;
-            this.btnRad.Location = new System.Drawing.Point(136, 149);
+            this.btnRad.Location = new System.Drawing.Point(145, 149);
             this.btnRad.Name = "btnRad";
             this.btnRad.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
             this.btnRad.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
@@ -558,7 +558,7 @@
             this.btnDeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeg.ForeColor = System.Drawing.Color.White;
-            this.btnDeg.Location = new System.Drawing.Point(136, 118);
+            this.btnDeg.Location = new System.Drawing.Point(145, 118);
             this.btnDeg.Name = "btnDeg";
             this.btnDeg.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
             this.btnDeg.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
@@ -570,27 +570,27 @@
             this.btnDeg.UseVisualStyleBackColor = false;
             this.btnDeg.Click += new System.EventHandler(this.btnDeg_Click);
             // 
-            // button_WOC1
+            // btnHistory
             // 
-            this.button_WOC1.BackColor = System.Drawing.Color.White;
-            this.button_WOC1.BackgroundImage = global::Calculator.Properties.Resources.History;
-            this.button_WOC1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button_WOC1.BorderColor = System.Drawing.Color.Transparent;
-            this.button_WOC1.ButtonColor = System.Drawing.Color.Transparent;
-            this.button_WOC1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Transition1.SetDecoration(this.button_WOC1, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.button_WOC1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_WOC1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.button_WOC1.ForeColor = System.Drawing.Color.White;
-            this.button_WOC1.Location = new System.Drawing.Point(324, 3);
-            this.button_WOC1.Name = "button_WOC1";
-            this.button_WOC1.OnHoverBorderColor = System.Drawing.Color.Transparent;
-            this.button_WOC1.OnHoverButtonColor = System.Drawing.Color.Transparent;
-            this.button_WOC1.OnHoverTextColor = System.Drawing.Color.Black;
-            this.button_WOC1.Size = new System.Drawing.Size(30, 30);
-            this.button_WOC1.TabIndex = 39;
-            this.button_WOC1.TextColor = System.Drawing.Color.Black;
-            this.button_WOC1.UseVisualStyleBackColor = false;
+            this.btnHistory.BackColor = System.Drawing.Color.White;
+            this.btnHistory.BackgroundImage = global::Calculator.Properties.Resources.History;
+            this.btnHistory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHistory.BorderColor = System.Drawing.Color.Transparent;
+            this.btnHistory.ButtonColor = System.Drawing.Color.Transparent;
+            this.btnHistory.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnHistory, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnHistory.ForeColor = System.Drawing.Color.White;
+            this.btnHistory.Location = new System.Drawing.Point(324, 3);
+            this.btnHistory.Name = "btnHistory";
+            this.btnHistory.OnHoverBorderColor = System.Drawing.Color.Transparent;
+            this.btnHistory.OnHoverButtonColor = System.Drawing.Color.Transparent;
+            this.btnHistory.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnHistory.Size = new System.Drawing.Size(30, 30);
+            this.btnHistory.TabIndex = 39;
+            this.btnHistory.TextColor = System.Drawing.Color.Black;
+            this.btnHistory.UseVisualStyleBackColor = false;
             // 
             // btnBack
             // 
@@ -604,7 +604,7 @@
             this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
             this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(204, 118);
+            this.btnBack.Location = new System.Drawing.Point(213, 118);
             this.btnBack.Name = "btnBack";
             this.btnBack.OnHoverBorderColor = System.Drawing.Color.Transparent;
             this.btnBack.OnHoverButtonColor = System.Drawing.Color.Transparent;
@@ -626,7 +626,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(52, 118);
+            this.btnClear.Location = new System.Drawing.Point(61, 118);
             this.btnClear.Name = "btnClear";
             this.btnClear.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
             this.btnClear.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
@@ -644,8 +644,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(349, 465);
-            this.Controls.Add(this.btnRad);
-            this.Controls.Add(this.btnDeg);
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.ExtraPanel);
             this.Controls.Add(this.guna2CustomGradientPanel1);
@@ -666,6 +664,8 @@
             this.Controls.Add(this.btn0);
             this.Controls.Add(this.btnDecimal);
             this.Controls.Add(this.btnEqual);
+            this.Controls.Add(this.btnRad);
+            this.Controls.Add(this.btnDeg);
             this.guna2Transition1.SetDecoration(this, Guna.UI2.AnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Calculator";
@@ -717,7 +717,7 @@
         private Guna.UI2.WinForms.Guna2Button btnLog;
         private Guna.UI2.WinForms.Guna2Button btnExponent;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private ePOSOne.btnProduct.Button_WOC button_WOC1;
+        private ePOSOne.btnProduct.Button_WOC btnHistory;
         private ePOSOne.btnProduct.Button_WOC btnDeg;
         private ePOSOne.btnProduct.Button_WOC btnRad;
     }
