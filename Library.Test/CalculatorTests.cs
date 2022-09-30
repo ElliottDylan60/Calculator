@@ -14,7 +14,6 @@ namespace Library.Test
 
         [Theory]
         [InlineData("1+1", "11+")]
-        [InlineData("1+1", "11+")]
         void postfix_testInfixToPostfix(string infix, string expected) {
             List<string> token = calculate.TokenizeEquation(infix);
             List<string> expectedToken = new List<string>();
@@ -23,6 +22,15 @@ namespace Library.Test
             }
             List<string> actual = calculate.toPostFix(token);
             Assert.Equal(actual, expectedToken);
+        }
+        [Theory]
+        [InlineData("-5.78+-(4—2.23)+sin(0)xcos(1)/(1+tan(2xln(-3+2x(1.23+99.111))))", "-7.55")]
+        void postfixEval_Test(string infix, string expected) {
+            List<string> token = calculate.TokenizeEquation(infix);
+            List<string> postfix = calculate.toPostFix(token);
+            string result = calculate.PostFixEvaluator(postfix);
+
+            Assert.Equal(expected, result);
         }
     }
 }
