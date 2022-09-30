@@ -93,11 +93,11 @@ namespace Calculator
                     {
                         result.Add(ch); // add character to results
                     }
-                    else if (ch == "(") // if open parenthesis
+                    else if (ch.Equals("(")) // if open parenthesis
                     {
                         stack.Push(ch); // push to temp stack
                     }
-                    else if (ch == ")") // if closed parenthesis
+                    else if (ch.Equals(")")) // if closed parenthesis
                     {
                         while (stack.Count > 0 && stack.Peek() != "(") // while the stack has items and the item is not a closing bracket
                         {
@@ -113,6 +113,10 @@ namespace Calculator
                             stack.Pop(); // found opening parenthesis, remove from stack (we dont want parenthesis in postfix equation)
                         }
 
+                    }
+                    else if (ch.Equals("sin") || ch.Equals("cos") || ch.Equals("tan") || ch.Equals("ln") || ch.Equals("log")) // if token is a function
+                    {
+                        stack.Push(ch); // push to stack
                     }
                     else
                     {
@@ -135,6 +139,7 @@ namespace Calculator
             }
             catch (Exception err)
             {
+                Console.WriteLine(err.ToString());
                 return new List<string>();
             }
         }
@@ -284,6 +289,7 @@ namespace Calculator
             }
             catch (Exception err)
             {
+                Console.WriteLine(err.ToString());
                 return "Syntax Error";
             }
         }

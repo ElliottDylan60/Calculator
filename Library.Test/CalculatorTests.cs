@@ -14,15 +14,14 @@ namespace Library.Test
 
         [Theory]
         [InlineData("1+1", "11+")]
+        [InlineData("1+1", "11+")]
         void postfix_testInfixToPostfix(string infix, string expected) {
             List<string> token = calculate.TokenizeEquation(infix);
             List<string> expectedToken = new List<string>();
             foreach (char ch in expected) {
                 expectedToken.Add(ch.ToString());
             }
-
             List<string> actual = calculate.toPostFix(token);
-            Console.WriteLine("test");
             Assert.Equal(actual, expectedToken);
         }
     }

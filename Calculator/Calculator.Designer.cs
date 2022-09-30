@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.AnimatorNS.Animation animation5 = new Guna.UI2.AnimatorNS.Animation();
+            Guna.UI2.AnimatorNS.Animation animation1 = new Guna.UI2.AnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Calculator));
             this.btnEqual = new System.Windows.Forms.Button();
             this.btnDecimal = new System.Windows.Forms.Button();
@@ -62,11 +62,11 @@
             this.btnClosePanel = new System.Windows.Forms.Label();
             this.btnOpenPanel = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnRad = new ePOSOne.btnProduct.Button_WOC();
-            this.btnDeg = new ePOSOne.btnProduct.Button_WOC();
             this.btnHistory = new ePOSOne.btnProduct.Button_WOC();
             this.btnBack = new ePOSOne.btnProduct.Button_WOC();
             this.btnClear = new ePOSOne.btnProduct.Button_WOC();
+            this.btnRad = new ePOSOne.btnProduct.Button_WOC();
+            this.btnDeg = new ePOSOne.btnProduct.Button_WOC();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.ExtraPanel.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -262,7 +262,6 @@
             this.txtOutput.ForeColor = System.Drawing.Color.Black;
             this.txtOutput.Location = new System.Drawing.Point(20, 45);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(325, 40);
             this.txtOutput.TabIndex = 28;
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -344,22 +343,22 @@
             // 
             this.guna2Transition1.AnimationType = Guna.UI2.AnimatorNS.AnimationType.HorizSlide;
             this.guna2Transition1.Cursor = null;
-            animation5.AnimateOnlyDifferences = true;
-            animation5.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.BlindCoeff")));
-            animation5.LeafCoeff = 0F;
-            animation5.MaxTime = 1F;
-            animation5.MinTime = 0F;
-            animation5.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicCoeff")));
-            animation5.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation5.MosaicShift")));
-            animation5.MosaicSize = 0;
-            animation5.Padding = new System.Windows.Forms.Padding(0);
-            animation5.RotateCoeff = 0F;
-            animation5.RotateLimit = 0F;
-            animation5.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.ScaleCoeff")));
-            animation5.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation5.SlideCoeff")));
-            animation5.TimeCoeff = 0F;
-            animation5.TransparencyCoeff = 0F;
-            this.guna2Transition1.DefaultAnimation = animation5;
+            animation1.AnimateOnlyDifferences = true;
+            animation1.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.BlindCoeff")));
+            animation1.LeafCoeff = 0F;
+            animation1.MaxTime = 1F;
+            animation1.MinTime = 0F;
+            animation1.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicCoeff")));
+            animation1.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation1.MosaicShift")));
+            animation1.MosaicSize = 0;
+            animation1.Padding = new System.Windows.Forms.Padding(0);
+            animation1.RotateCoeff = 0F;
+            animation1.RotateLimit = 0F;
+            animation1.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.ScaleCoeff")));
+            animation1.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation1.SlideCoeff")));
+            animation1.TimeCoeff = 0F;
+            animation1.TransparencyCoeff = 0F;
+            this.guna2Transition1.DefaultAnimation = animation1;
             // 
             // ExtraPanel
             // 
@@ -524,52 +523,6 @@
             this.guna2ShadowPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_MouseMove);
             this.guna2ShadowPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Main_MouseUp);
             // 
-            // btnRad
-            // 
-            this.btnRad.BackColor = System.Drawing.Color.White;
-            this.btnRad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRad.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnRad.ButtonColor = System.Drawing.Color.White;
-            this.btnRad.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Transition1.SetDecoration(this.btnRad, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btnRad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRad.ForeColor = System.Drawing.Color.White;
-            this.btnRad.Location = new System.Drawing.Point(145, 149);
-            this.btnRad.Name = "btnRad";
-            this.btnRad.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnRad.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnRad.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnRad.Size = new System.Drawing.Size(60, 30);
-            this.btnRad.TabIndex = 40;
-            this.btnRad.Text = "rad";
-            this.btnRad.TextColor = System.Drawing.Color.Black;
-            this.btnRad.UseVisualStyleBackColor = false;
-            this.btnRad.Click += new System.EventHandler(this.btnRad_Click);
-            // 
-            // btnDeg
-            // 
-            this.btnDeg.BackColor = System.Drawing.Color.White;
-            this.btnDeg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDeg.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnDeg.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnDeg.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Transition1.SetDecoration(this.btnDeg, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btnDeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeg.ForeColor = System.Drawing.Color.White;
-            this.btnDeg.Location = new System.Drawing.Point(145, 118);
-            this.btnDeg.Name = "btnDeg";
-            this.btnDeg.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnDeg.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
-            this.btnDeg.OnHoverTextColor = System.Drawing.Color.White;
-            this.btnDeg.Size = new System.Drawing.Size(60, 30);
-            this.btnDeg.TabIndex = 39;
-            this.btnDeg.Text = "deg";
-            this.btnDeg.TextColor = System.Drawing.Color.White;
-            this.btnDeg.UseVisualStyleBackColor = false;
-            this.btnDeg.Click += new System.EventHandler(this.btnDeg_Click);
-            // 
             // btnHistory
             // 
             this.btnHistory.BackColor = System.Drawing.Color.White;
@@ -637,6 +590,52 @@
             this.btnClear.TextColor = System.Drawing.Color.Black;
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnRad
+            // 
+            this.btnRad.BackColor = System.Drawing.Color.White;
+            this.btnRad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRad.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnRad.ButtonColor = System.Drawing.Color.White;
+            this.btnRad.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnRad, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnRad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRad.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRad.ForeColor = System.Drawing.Color.White;
+            this.btnRad.Location = new System.Drawing.Point(145, 149);
+            this.btnRad.Name = "btnRad";
+            this.btnRad.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnRad.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnRad.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnRad.Size = new System.Drawing.Size(60, 30);
+            this.btnRad.TabIndex = 40;
+            this.btnRad.Text = "rad";
+            this.btnRad.TextColor = System.Drawing.Color.Black;
+            this.btnRad.UseVisualStyleBackColor = false;
+            this.btnRad.Click += new System.EventHandler(this.btnRad_Click);
+            // 
+            // btnDeg
+            // 
+            this.btnDeg.BackColor = System.Drawing.Color.White;
+            this.btnDeg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnDeg.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.ButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnDeg, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnDeg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeg.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeg.ForeColor = System.Drawing.Color.White;
+            this.btnDeg.Location = new System.Drawing.Point(145, 118);
+            this.btnDeg.Name = "btnDeg";
+            this.btnDeg.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.OnHoverButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(105)))), ((int)(((byte)(255)))));
+            this.btnDeg.OnHoverTextColor = System.Drawing.Color.White;
+            this.btnDeg.Size = new System.Drawing.Size(60, 30);
+            this.btnDeg.TabIndex = 39;
+            this.btnDeg.Text = "deg";
+            this.btnDeg.TextColor = System.Drawing.Color.White;
+            this.btnDeg.UseVisualStyleBackColor = false;
+            this.btnDeg.Click += new System.EventHandler(this.btnDeg_Click);
             // 
             // Calculator
             // 
