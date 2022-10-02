@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+This is an open source library found here:
+https://codeinpc.com/c-custom-round-button/
+
+This adds more cusomaizable button to the UI form
+*/
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 

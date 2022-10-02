@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections;
 using System.Runtime.CompilerServices;
 
 namespace Calculator
@@ -117,7 +111,10 @@ namespace Calculator
         /// 
         /// Hides some form elements and expands a panel
         /// 
-        /// uses guna2 to animage
+        /// uses guna2 to animate
+        /// 
+        /// Guna2 is a library used to make the UI look nicer. It addes
+        /// gradiants, animations, buttons, and more
         /// </summary>
         private void btnOpenPanel_Click(object sender, EventArgs e)
         {
