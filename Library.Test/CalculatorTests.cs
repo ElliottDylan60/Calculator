@@ -13,13 +13,11 @@ namespace Library.Test
         Calc calculate = new Calc();
 
         [Theory]
-        [InlineData("1+1", "11+")]
+        [InlineData("1+1", "1 1 +")]
+        [InlineData("-5.78+-(4—2.23)+sin(0)xcos(1)/(1+tan(2xln(-3+2x(1.23+9.111))))", "-5.78 4 2.23—-+0 1 1 2 -3 2 1.23 9.111+x+lnxtan+/cosxsin+")]
         void postfix_testInfixToPostfix(string infix, string expected) {
             List<string> token = calculate.TokenizeEquation(infix);
-            List<string> expectedToken = new List<string>();
-            foreach (char ch in expected) {
-                expectedToken.Add(ch.ToString());
-            }
+            List<string> expectedToken = calculate.TokenizeEquation(expected);
             List<string> actual = calculate.toPostFix(token);
             Assert.Equal(actual, expectedToken);
         }

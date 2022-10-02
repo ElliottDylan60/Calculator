@@ -51,7 +51,7 @@ namespace Calculator
         /// <returns>List of strings, i.e. the tokenized equation</returns>
         public List<string> TokenizeEquation(string equation)
         {
-            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^', }; // list of delimiters to separate from
+            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^'}; // list of delimiters to separate from
             var buffer = ""; // buffer currently set to empty, used to determine large numbers
             var result = new List<string>(); // results stored as a list
             foreach (var ch in equation) // for each character in the equation
@@ -64,6 +64,12 @@ namespace Calculator
                 }
                 else // if character is a number
                 {
+                    if (ch.Equals(' ')) {
+                        if (buffer.Length > 0) result.Add(buffer);
+                        buffer = "";
+                        continue;
+                    }
+                        
                     buffer += ch; // add character to buffer
                 }
             }
@@ -87,8 +93,7 @@ namespace Calculator
                 {
                     string ch = inFix[i]; // get character
                     double chNum;
-                    //bool isNum = Int32.TryParse(ch, out chNum); // check if character is a number
-                    bool isNum = Double.TryParse(ch, out chNum);
+                    bool isNum = Double.TryParse(ch, out chNum); // check if character is a number
                     if (isNum) // if character is a number
                     {
                         result.Add(ch); // add character to results
@@ -195,7 +200,7 @@ namespace Calculator
                         ans = a / b; // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
-                    else if (ch.Equals("^"))
+                    else if (ch.Equals("^")) // if character is a '^' sign
                     { // if character is a '^' sign
                         string sa = (string)stack.Pop(); // get first number in stack
                         string sb = (string)stack.Pop(); // get second number in stack
@@ -204,78 +209,75 @@ namespace Calculator
                         ans = Math.Pow(a, b); // calculates first / second
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
-                    else if (ch.Equals("ln"))
+                    else if (ch.Equals("ln")) // if token is an 'ln' function
                     {
                         string sa = (string)stack.Pop(); // get first number in stack
                         a = Convert.ToDouble(sa); // convert string to double
-                        ans = Math.Log(a); // calculate log of number
+                        ans = Math.Log(a); // calculate log of number in base e
                         stack.Push(ans.ToString()); // push number to stack
                     }
-                    else if (ch.Equals("log"))
+                    else if (ch.Equals("log")) // if token is a 'log' function
                     {
-                        string sa = (string)stack.Pop();
-                        a = Convert.ToDouble(sa);
-                        ans = Math.Log(a, 10);
-                        stack.Push(ans.ToString());
+                        string sa = (string)stack.Pop(); // get first number in stack
+                        a = Convert.ToDouble(sa); // convert string to double
+                        ans = Math.Log(a, 10); // calculate log of number in base 10
+                        stack.Push(ans.ToString()); // push result to stack
                     }
-                    else if (ch.Equals("sin"))
+                    else if (ch.Equals("sin")) // if token is a 'sin' function
                     {
-                        if (inDeg)
+                        if (inDeg) // if user wants result in degrees
                         {
-                            string sa = (string)stack.Pop();
-                            a = Convert.ToDouble(sa);
-                            ans = Math.Sin(a);
+                            string sa = (string)stack.Pop(); // get first number in stack
+                            a = Convert.ToDouble(sa); // convert string to double
+                            ans = Math.Sin(a); // get sin of number
                         }
-                        else
+                        else // if user wants results in radians
                         {
-                            string sa = (string)stack.Pop();
-                            a = Convert.ToDouble(sa);
+                            string sa = (string)stack.Pop(); // get first number in stack
+                            a = Convert.ToDouble(sa); // convert string to double
                             ans = Math.Sin((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
                         }
-                        ans = Math.Round(ans, 3);
-                        stack.Push(ans.ToString());
+                        stack.Push(ans.ToString()); // push result to stacl
 
                     }
-                    else if (ch.Equals("cos"))
+                    else if (ch.Equals("cos")) // if token is a 'cos' function
                     {
-                        if (inDeg)
+                        if (inDeg) // if user wants results in degrees
                         {
-                            string sa = (string)stack.Pop();
-                            a = Convert.ToDouble(sa);
-                            ans = Math.Cos(a);
+                            string sa = (string)stack.Pop(); // get first number in stack
+                            a = Convert.ToDouble(sa); // convert string to double
+                            ans = Math.Cos(a); // calculate cos of number
                         }
-                        else
+                        else // if user wants results in radians
                         {
-                            string sa = (string)stack.Pop();
-                            a = Convert.ToDouble(sa);
+                            string sa = (string)stack.Pop(); // get first number in stack
+                            a = Convert.ToDouble(sa); // convert string to double
                             ans = Math.Cos((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
                         }
-                        ans = Math.Round(ans, 3);
-                        stack.Push(ans.ToString());
+                        stack.Push(ans.ToString()); // push result to stack
                     }
-                    else if (ch.Equals("tan"))
+                    else if (ch.Equals("tan")) // if token is a 'tan' function
                     {
-                        if (inDeg)
+                        if (inDeg) // if user wants results in degrees
                         {
-                            string sa = (string)stack.Pop();
-                            a = Convert.ToDouble(sa);
-                            ans = Math.Tan(a);
+                            string sa = (string)stack.Pop(); // get first number from stack
+                            a = Convert.ToDouble(sa); // convert string to double
+                            ans = Math.Tan(a); // calculate tan of number
                         }
-                        else
+                        else // if user wants results in radians
                         {
-                            string sa = (string)stack.Pop();
-                            a = Convert.ToDouble(sa);
+                            string sa = (string)stack.Pop(); // get first number from stack
+                            a = Convert.ToDouble(sa); // convert string to double
                             ans = Math.Tan((Math.PI / 180) * a); // Multiple a by pi/180 to convert to radians
                         }
-                        ans = Math.Round(ans, 3);
-                        stack.Push(ans.ToString());
+                        stack.Push(ans.ToString()); // push result to stack
                     }
-                    else if (ch.Equals("-"))
+                    else if (ch.Equals("-"))  // if character is an '-' function
                     {
-                        string sa = (string)stack.Pop();
-                        a = Convert.ToDouble(sa);
-                        ans = -a;
-                        stack.Push(ans.ToString());
+                        string sa = (string)stack.Pop(); // get first number from stack
+                        a = Convert.ToDouble(sa); // convert string to double
+                        ans = -a; // switch the sign of the number (i.e. if positive, turn nagative and vise versa)
+                        stack.Push(ans.ToString()); // push result to stack
                     }
                     else // if character is a number
                     {
@@ -284,13 +286,15 @@ namespace Calculator
 
 
                 }
-                return (string)stack.Pop(); // final number in stack is the answer
-
+                string result = (string)stack.Pop(); // pop result
+                double resultAns = Convert.ToDouble(result); // convert result to double
+                resultAns = Math.Round(resultAns, 5); // round result to 5 decimal points
+                return resultAns.ToString(); // final number in stack is the answer
             }
-            catch (Exception err)
+            catch (Exception err) // Error has ben caught, send syntax error to user
             {
-                Console.WriteLine(err.ToString());
-                return "Syntax Error";
+                //Console.WriteLine(err.ToString()); // print error for debugging
+                return "Syntax Error"; // return message for user
             }
         }
     }

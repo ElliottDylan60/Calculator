@@ -262,6 +262,7 @@
             this.txtOutput.ForeColor = System.Drawing.Color.Black;
             this.txtOutput.Location = new System.Drawing.Point(20, 45);
             this.txtOutput.Name = "txtOutput";
+            this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(325, 40);
             this.txtOutput.TabIndex = 28;
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

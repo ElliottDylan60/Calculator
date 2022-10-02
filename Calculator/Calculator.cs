@@ -296,10 +296,15 @@ namespace Calculator
         /// </summary>
         private void btnEqual_Click(object sender, EventArgs e)
         {
-            List<string> token = calculate.TokenizeEquation(txtOutput.Text);
-            List<string> postfix = calculate.toPostFix(token);
-            string result = calculate.PostFixEvaluator(postfix);
-            txtOutput.Text = result;
+            List<string> token = calculate.TokenizeEquation(txtOutput.Text); // tokenizes given equation
+            List<string> postfix = calculate.toPostFix(token); // infix to postix
+            string result = calculate.PostFixEvaluator(postfix); // postfix evaluator
+            if (result.Equals("∞")) // Result is too large to display
+                result = "Overflow"; // print "Overflow"
+            double chNum;
+            if (!result.Equals("Overflow") && !Double.TryParse(result, out chNum)) // There was no overflow and result is not a number
+                result = "Syntax Error";
+            txtOutput.Text = result; // show user results
         }
         /// <summary>
         /// Button Pressed
