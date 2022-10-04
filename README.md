@@ -16,13 +16,13 @@ If you do not with to download Visual Studios 2022, install the [.Net Framework 
 
 After installing .Net Framework, locate the MSBuild.exe
 
-Its usually locatied here
+Its usually located here
 
 '''
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe
 '''
 
-Use the MSBuild.exe to compile.run the .sln file
+Use the MSBuild.exe to compile/run the .sln file
 
 '''
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe Calculator.sln
