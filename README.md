@@ -3,7 +3,7 @@ This is a simple Calculator Design written in C#. This Calculator uses the Shunt
 
 I wrote this program in my CS 480, Advanced Software Enginering, course at CWU.
 
-## How to Rum
+## How to Run
 This section will go over how to compile/run this project
 
 ### Visual Studios 2022
