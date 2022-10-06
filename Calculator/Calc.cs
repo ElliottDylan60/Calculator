@@ -17,6 +17,10 @@ namespace Calculator
         /// in radians or degrees
         /// </summary>
         public bool inDeg = false;
+        /// <summary>
+        /// List of Error Types to check for before calling syntax error
+        /// </summary>
+        List<string> ErrorTypes = new List<string>() { "Divide By Zero", "Syntax Error" };
 
         /// <summary>
         /// Determins the precedence of each operator
@@ -35,6 +39,12 @@ namespace Calculator
                     return 2;
                 case "^":
                     return 3;
+                case "sin":
+                case "cos":
+                case "tan":
+                case "log:":
+                case "ln":
+                    return 5;
                 case "-":
                     return 4;
             }
@@ -51,7 +61,7 @@ namespace Calculator
         /// <returns>List of strings, i.e. the tokenized equation</returns>
         public List<string> TokenizeEquation(string equation)
         {
-            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^'}; // list of delimiters to separate from
+            var delimiters = new[] { '(', '+', '—', 'x', '/', ')', '^', '-' }; // list of delimiters to separate from
             var buffer = ""; // buffer currently set to empty, used to determine large numbers
             var result = new List<string>(); // results stored as a list
             foreach (var ch in equation) // for each character in the equation
@@ -88,7 +98,7 @@ namespace Calculator
             try
             {
                 List<string> result = new List<string>(); // result stack
-                Stack<string> stack = new Stack<string>(); // temp stack
+                Stack<string> stack = new Stack<string>(); // operator stack
                 for (int i = 0; i < inFix.Count; i++) // foreach character in tokenized infix equation
                 {
                     string ch = inFix[i]; // get character
@@ -107,21 +117,16 @@ namespace Calculator
                         while (stack.Count > 0 && stack.Peek() != "(") // while the stack has items and the item is not a closing bracket
                         {
                             result.Add(stack.Pop()); // add non-parehtnesis functions to results
-
                         }
                         if (stack.Count > 0 && stack.Peek() != "(") // if last element is not an open perenthesis
                         {
-                            return new List<string>();
+                            return new List<string>(); // couldnt find open parenthesis, return syntax error
                         }
                         else
                         {
                             stack.Pop(); // found opening parenthesis, remove from stack (we dont want parenthesis in postfix equation)
                         }
 
-                    }
-                    else if (ch.Equals("sin") || ch.Equals("cos") || ch.Equals("tan") || ch.Equals("ln") || ch.Equals("log")) // if token is a function
-                    {
-                        stack.Push(ch); // push to stack
                     }
                     else
                     {
@@ -197,7 +202,12 @@ namespace Calculator
                         string sb = (string)stack.Pop(); // get second number in stack
                         a = Convert.ToDouble(sb); // convert string to double
                         b = Convert.ToDouble(sa); // convert string to double
-                        ans = a / b; // calculates first / second
+                        if (b == 0) { // is denominator is a zero
+                            stack.Clear(); // no need to continue computing results
+                            stack.Push("Divide By Zero"); // theres a divide by zero error
+                            break; // break out of loop
+                        }
+                        ans = a / b; // calculates first / second    
                         stack.Push(ans.ToString()); // adds answer to stack
                     }
                     else if (ch.Equals("^")) // if character is a '^' sign
@@ -287,13 +297,18 @@ namespace Calculator
 
                 }
                 string result = (string)stack.Pop(); // pop result
+                
+                if (ErrorTypes.Contains(result))// if result is an error
+                {
+                    return result; // return error type
+                }
                 double resultAns = Convert.ToDouble(result); // convert result to double
                 resultAns = Math.Round(resultAns, 5); // round result to 5 decimal points
                 return resultAns.ToString(); // final number in stack is the answer
             }
             catch (Exception err) // Error has ben caught, send syntax error to user
             {
-                //Console.WriteLine(err.ToString()); // print error for debugging
+                Console.WriteLine(err.ToString()); // print error for debugging
                 return "Syntax Error"; // return message for user
             }
         }

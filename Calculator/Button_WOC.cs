@@ -74,7 +74,7 @@ namespace ePOSOne.btnProduct
 
         public Color BorderColor
         {
-            get => _borderColor;
+            get { return _borderColor; }
             set
             {
                 _borderColor = value;
@@ -84,7 +84,7 @@ namespace ePOSOne.btnProduct
 
         public Color OnHoverBorderColor
         {
-            get => _onHoverBorderColor;
+            get { return _onHoverBorderColor; }
             set
             {
                 _onHoverBorderColor = value;
@@ -94,7 +94,7 @@ namespace ePOSOne.btnProduct
 
         public Color ButtonColor
         {
-            get => _buttonColor;
+            get { return _buttonColor; }
             set
             {
                 _buttonColor = value;
@@ -104,7 +104,7 @@ namespace ePOSOne.btnProduct
 
         public Color OnHoverButtonColor
         {
-            get => _onHoverButtonColor;
+            get { return _onHoverButtonColor; }
             set
             {
                 _onHoverButtonColor = value;
@@ -114,7 +114,7 @@ namespace ePOSOne.btnProduct
 
         public Color TextColor
         {
-            get => _textColor;
+            get { return _textColor; }
             set
             {
                 _textColor = value;
@@ -124,7 +124,7 @@ namespace ePOSOne.btnProduct
 
         public Color OnHoverTextColor
         {
-            get => _onHoverTextColor;
+            get { return _onHoverTextColor; }
             set
             {
                 _onHoverTextColor = value;

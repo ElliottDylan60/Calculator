@@ -23,6 +23,10 @@ namespace Calculator
         /// </summary>
         private Calc calculate = new Calc();
         /// <summary>
+        /// List of Error Types to check for before calling syntax error
+        /// </summary>
+        List<string> ErrorTypes = new List<string>() {"Divide By Zero", "Syntax Error"};
+        /// <summary>
         /// Format all Error Messages to look alike
         /// </summary>
         /// <param name="ErrorCode">Error Code, can be looked up at end of Form1.cs</param>
@@ -106,6 +110,15 @@ namespace Calculator
               BUTTONS
         ******************/
         #region FormButtons
+        /// <summary>
+        /// Button that closes the form
+        /// 
+        /// No other action needed
+        /// </summary>
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         /// <summary>
         /// Button Pressed
         /// 
@@ -296,10 +309,10 @@ namespace Calculator
             List<string> token = calculate.TokenizeEquation(txtOutput.Text); // tokenizes given equation
             List<string> postfix = calculate.toPostFix(token); // infix to postix
             string result = calculate.PostFixEvaluator(postfix); // postfix evaluator
-            if (result.Equals("∞")) // Result is too large to display
+            if (result.Equals("∞") || result.Equals("-∞")) // Result is too large to display
                 result = "Overflow"; // print "Overflow"
             double chNum;
-            if (!result.Equals("Overflow") && !Double.TryParse(result, out chNum)) // There was no overflow and result is not a number
+            if (!result.Equals("Overflow") && !Double.TryParse(result, out chNum) && !ErrorTypes.Contains(result)) // There was no overflow and result is not a number
                 result = "Syntax Error";
             txtOutput.Text = result; // show user results
         }
@@ -400,5 +413,7 @@ namespace Calculator
             txtOutput.AppendText("ln(");
         }
         #endregion
+
+        
     }
 }

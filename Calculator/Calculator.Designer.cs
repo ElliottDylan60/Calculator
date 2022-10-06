@@ -62,11 +62,11 @@
             this.btnClosePanel = new System.Windows.Forms.Label();
             this.btnOpenPanel = new System.Windows.Forms.Label();
             this.guna2ShadowPanel1 = new Guna.UI2.WinForms.Guna2ShadowPanel();
-            this.btnHistory = new ePOSOne.btnProduct.Button_WOC();
-            this.btnBack = new ePOSOne.btnProduct.Button_WOC();
+            this.btnClose = new ePOSOne.btnProduct.Button_WOC();
             this.btnClear = new ePOSOne.btnProduct.Button_WOC();
             this.btnRad = new ePOSOne.btnProduct.Button_WOC();
             this.btnDeg = new ePOSOne.btnProduct.Button_WOC();
+            this.btnBack = new ePOSOne.btnProduct.Button_WOC();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.ExtraPanel.SuspendLayout();
             this.guna2ShadowPanel1.SuspendLayout();
@@ -262,7 +262,6 @@
             this.txtOutput.ForeColor = System.Drawing.Color.Black;
             this.txtOutput.Location = new System.Drawing.Point(20, 45);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(325, 40);
             this.txtOutput.TabIndex = 28;
             this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -510,7 +509,7 @@
             // guna2ShadowPanel1
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ShadowPanel1.Controls.Add(this.btnHistory);
+            this.guna2ShadowPanel1.Controls.Add(this.btnClose);
             this.guna2ShadowPanel1.Controls.Add(this.txtOutput);
             this.guna2Transition1.SetDecoration(this.guna2ShadowPanel1, Guna.UI2.AnimatorNS.DecorationType.None);
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.White;
@@ -524,50 +523,28 @@
             this.guna2ShadowPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Main_MouseMove);
             this.guna2ShadowPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Main_MouseUp);
             // 
-            // btnHistory
+            // btnClose
             // 
-            this.btnHistory.BackColor = System.Drawing.Color.White;
-            this.btnHistory.BackgroundImage = global::Calculator.Properties.Resources.History;
-            this.btnHistory.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnHistory.BorderColor = System.Drawing.Color.Transparent;
-            this.btnHistory.ButtonColor = System.Drawing.Color.Transparent;
-            this.btnHistory.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Transition1.SetDecoration(this.btnHistory, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btnHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btnHistory.ForeColor = System.Drawing.Color.White;
-            this.btnHistory.Location = new System.Drawing.Point(324, 3);
-            this.btnHistory.Name = "btnHistory";
-            this.btnHistory.OnHoverBorderColor = System.Drawing.Color.Transparent;
-            this.btnHistory.OnHoverButtonColor = System.Drawing.Color.Transparent;
-            this.btnHistory.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnHistory.Size = new System.Drawing.Size(30, 30);
-            this.btnHistory.TabIndex = 39;
-            this.btnHistory.TextColor = System.Drawing.Color.Black;
-            this.btnHistory.UseVisualStyleBackColor = false;
-            // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.White;
-            this.btnBack.BackgroundImage = global::Calculator.Properties.Resources.Back;
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnBack.BorderColor = System.Drawing.Color.Transparent;
-            this.btnBack.ButtonColor = System.Drawing.Color.Transparent;
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Default;
-            this.guna2Transition1.SetDecoration(this.btnBack, Guna.UI2.AnimatorNS.DecorationType.None);
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
-            this.btnBack.ForeColor = System.Drawing.Color.White;
-            this.btnBack.Location = new System.Drawing.Point(213, 118);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.OnHoverBorderColor = System.Drawing.Color.Transparent;
-            this.btnBack.OnHoverButtonColor = System.Drawing.Color.Transparent;
-            this.btnBack.OnHoverTextColor = System.Drawing.Color.Black;
-            this.btnBack.Size = new System.Drawing.Size(70, 50);
-            this.btnBack.TabIndex = 30;
-            this.btnBack.TextColor = System.Drawing.Color.Black;
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnClose.BackColor = System.Drawing.Color.White;
+            this.btnClose.BackgroundImage = global::Calculator.Properties.Resources.Close;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.BorderColor = System.Drawing.Color.Transparent;
+            this.btnClose.ButtonColor = System.Drawing.Color.Transparent;
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnClose, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(324, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.OnHoverBorderColor = System.Drawing.Color.Transparent;
+            this.btnClose.OnHoverButtonColor = System.Drawing.Color.Transparent;
+            this.btnClose.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnClose.Size = new System.Drawing.Size(30, 30);
+            this.btnClose.TabIndex = 39;
+            this.btnClose.TextColor = System.Drawing.Color.Black;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnClear
             // 
@@ -637,6 +614,29 @@
             this.btnDeg.TextColor = System.Drawing.Color.White;
             this.btnDeg.UseVisualStyleBackColor = false;
             this.btnDeg.Click += new System.EventHandler(this.btnDeg_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.White;
+            this.btnBack.BackgroundImage = global::Calculator.Properties.Resources.Back;
+            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnBack.BorderColor = System.Drawing.Color.Transparent;
+            this.btnBack.ButtonColor = System.Drawing.Color.Transparent;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Default;
+            this.guna2Transition1.SetDecoration(this.btnBack, Guna.UI2.AnimatorNS.DecorationType.None);
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F);
+            this.btnBack.ForeColor = System.Drawing.Color.White;
+            this.btnBack.Location = new System.Drawing.Point(213, 118);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.OnHoverBorderColor = System.Drawing.Color.Transparent;
+            this.btnBack.OnHoverButtonColor = System.Drawing.Color.Transparent;
+            this.btnBack.OnHoverTextColor = System.Drawing.Color.Black;
+            this.btnBack.Size = new System.Drawing.Size(70, 50);
+            this.btnBack.TabIndex = 30;
+            this.btnBack.TextColor = System.Drawing.Color.Black;
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // Calculator
             // 
@@ -717,7 +717,7 @@
         private Guna.UI2.WinForms.Guna2Button btnLog;
         private Guna.UI2.WinForms.Guna2Button btnExponent;
         private Guna.UI2.WinForms.Guna2ShadowPanel guna2ShadowPanel1;
-        private ePOSOne.btnProduct.Button_WOC btnHistory;
+        private ePOSOne.btnProduct.Button_WOC btnClose;
         private ePOSOne.btnProduct.Button_WOC btnDeg;
         private ePOSOne.btnProduct.Button_WOC btnRad;
     }
