@@ -306,6 +306,11 @@ namespace Calculator
         /// </summary>
         private void btnEqual_Click(object sender, EventArgs e)
         {
+            // Check if user entered an equation
+            if (txtOutput.Text == "") {
+                return; // dont do anything if the user has not entered anything in yet
+            }
+
             List<string> token = calculate.TokenizeEquation(txtOutput.Text); // tokenizes given equation
             List<string> postfix = calculate.toPostFix(token); // infix to postix
             string result = calculate.PostFixEvaluator(postfix); // postfix evaluator

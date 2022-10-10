@@ -284,10 +284,28 @@ namespace Calculator
                     }
                     else if (ch.Equals("-"))  // if character is an '-' function
                     {
-                        string sa = (string)stack.Pop(); // get first number from stack
-                        a = Convert.ToDouble(sa); // convert string to double
-                        ans = -a; // switch the sign of the number (i.e. if positive, turn nagative and vise versa)
-                        stack.Push(ans.ToString()); // push result to stack
+                        if (stack.Count <= 0)
+                        {
+                            
+                            string temp = PostFix[i + 1];
+                            if (temp.Equals("-")) {
+                                i++;
+                                continue;
+                            }
+                            int num = Int32.Parse(temp);
+                            num = -num;
+                            PostFix[i + 1] = num.ToString();
+                        }
+                        else {
+                            string sa = (string)stack.Pop(); // get first number from stack
+                            if (!sa.Equals("-"))
+                            { // double negative, Cancels out do nothing
+                                a = Convert.ToDouble(sa); // convert string to double
+                                ans = -a; // switch the sign of the number (i.e. if positive, turn nagative and vise versa)
+                                stack.Push(ans.ToString()); // push result to stack
+                            }
+                        }
+                        
                     }
                     else // if character is a number
                     {

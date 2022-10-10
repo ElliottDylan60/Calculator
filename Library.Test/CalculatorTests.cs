@@ -39,7 +39,7 @@ namespace Library.Test
             Assert.Equal(expected, result);
         }
         [Theory]
-        [InlineData("", "")]
+        [InlineData("", "Syntax Error")]
         void postfixEvalRadians_Test(string infix, string expected) {
             List<string> token = calculate.TokenizeEquation(infix);
             List<string> postfix = calculate.toPostFix(token);
