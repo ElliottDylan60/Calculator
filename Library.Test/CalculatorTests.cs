@@ -31,6 +31,7 @@ namespace Library.Test
         [InlineData("0+0", "0")]
         [InlineData("ln(0)", "-∞")]
         [InlineData("1000000^1000000", "∞")]
+        [InlineData("----1", "1")]
         void postfixEval_Test(string infix, string expected) {
             List<string> token = calculate.TokenizeEquation(infix);
             List<string> postfix = calculate.toPostFix(token);

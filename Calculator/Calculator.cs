@@ -26,6 +26,8 @@ namespace Calculator
         /// List of Error Types to check for before calling syntax error
         /// </summary>
         List<string> ErrorTypes = new List<string>() {"Divide By Zero", "Syntax Error"};
+        string open = "(";
+        string close = ")";
         /// <summary>
         /// Format all Error Messages to look alike
         /// </summary>
@@ -52,6 +54,8 @@ namespace Calculator
         private void Calculator_Load(object sender, EventArgs e)
         {
             btnExponent.Text = "x\u207f";
+            btnOpenSoft.ContextMenuStrip = BracketMenu;
+            btnCloseSoft.ContextMenuStrip = BracketMenu;
         }
         /*************************
                Drag and Drop
@@ -291,14 +295,14 @@ namespace Calculator
         /// </summary>
         private void btnOpenSoft_Click(object sender, EventArgs e)
         {
-            txtOutput.AppendText("("); // Adds '(' to textbox
+            txtOutput.AppendText(open); // Adds '(' to textbox
         }
         /// <summary>
         /// Button Pressed
         /// Add ')' to textbox
         /// </summary>
         private void btnCloseSoft_Click(object sender, EventArgs e) {
-            txtOutput.AppendText(")"); // Adds ')' to textbox
+            txtOutput.AppendText(close); // Adds ')' to textbox
         }
         /// <summary>
         /// Button Pressed
@@ -310,6 +314,8 @@ namespace Calculator
             if (txtOutput.Text == "") {
                 return; // dont do anything if the user has not entered anything in yet
             }
+            txtOutput.Text = txtOutput.Text.Replace('{', '(');
+            txtOutput.Text = txtOutput.Text.Replace('}', ')');
 
             List<string> token = calculate.TokenizeEquation(txtOutput.Text); // tokenizes given equation
             List<string> postfix = calculate.toPostFix(token); // infix to postix
@@ -417,8 +423,30 @@ namespace Calculator
         {
             txtOutput.AppendText("ln(");
         }
+        /// <summary>
+        /// Button Pressed
+        /// Adds 'cot(' to textbox
+        /// </summary>
+        private void btnCot_Click(object sender, EventArgs e)
+        {
+            txtOutput.AppendText("cot(");
+        }
         #endregion
 
-        
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            btnOpenSoft.Text = "(";
+            btnCloseSoft.Text = ")";
+            open = "(";
+            close = ")";
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            btnOpenSoft.Text = "{";
+            btnCloseSoft.Text = "}";
+            open = "{";
+            close = "}";
+        }
     }
 }

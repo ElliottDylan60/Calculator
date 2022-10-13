@@ -44,6 +44,7 @@ namespace Calculator
                 case "tan":
                 case "log:":
                 case "ln":
+                case "cot":
                     return 5;
                 case "-":
                     return 4;
@@ -130,7 +131,7 @@ namespace Calculator
                     }
                     else
                     {
-                        while (stack.Count > 0 && precedence(ch) <= precedence(stack.Peek())) // check the precedence of currenct function to that in the stack
+                        while (stack.Count > 0 && precedence(ch) <= precedence(stack.Peek()) && stack.Peek() != "(") // check the precedence of currenct function to that in the stack
                         {
                             result.Add(stack.Pop()); // add to result if precedence is less
                         }
@@ -202,7 +203,8 @@ namespace Calculator
                         string sb = (string)stack.Pop(); // get second number in stack
                         a = Convert.ToDouble(sb); // convert string to double
                         b = Convert.ToDouble(sa); // convert string to double
-                        if (b == 0) { // is denominator is a zero
+                        if (b == 0)
+                        { // is denominator is a zero
                             stack.Clear(); // no need to continue computing results
                             stack.Push("Divide By Zero"); // theres a divide by zero error
                             break; // break out of loop
@@ -282,13 +284,29 @@ namespace Calculator
                         }
                         stack.Push(ans.ToString()); // push result to stack
                     }
+                    else if (ch.Equals("cot")) {
+                        if (inDeg) // if user wants results in degrees
+                        {
+                            string sa = (string)stack.Pop(); // get first number from stack
+                            a = Convert.ToDouble(sa); // convert string to double
+                            ans = (Math.Cos(a)) / (Math.Sin(a)); // calculate tan of number
+                        }
+                        else // if user wants results in radians
+                        {
+                            string sa = (string)stack.Pop(); // get first number from stack
+                            a = Convert.ToDouble(sa); // convert string to double
+                            ans = (Math.Cos((Math.PI / 180) * a)) / (Math.Sin((Math.PI / 180) * a)); // Multiple a by pi/180 to convert to radians
+                        }
+                        stack.Push(ans.ToString()); // push result to stack
+                    }
                     else if (ch.Equals("-"))  // if character is an '-' function
                     {
                         if (stack.Count <= 0)
                         {
-                            
+
                             string temp = PostFix[i + 1];
-                            if (temp.Equals("-")) {
+                            if (temp.Equals("-"))
+                            {
                                 i++;
                                 continue;
                             }
@@ -296,7 +314,8 @@ namespace Calculator
                             num = -num;
                             PostFix[i + 1] = num.ToString();
                         }
-                        else {
+                        else
+                        {
                             string sa = (string)stack.Pop(); // get first number from stack
                             if (!sa.Equals("-"))
                             { // double negative, Cancels out do nothing
@@ -305,7 +324,7 @@ namespace Calculator
                                 stack.Push(ans.ToString()); // push result to stack
                             }
                         }
-                        
+
                     }
                     else // if character is a number
                     {
@@ -313,7 +332,10 @@ namespace Calculator
                     }
 
 
-                }
+                }/*
+                if (stack.Count > 1) {
+                    return "Syntax Error";
+                }*/
                 string result = (string)stack.Pop(); // pop result
                 
                 if (ErrorTypes.Contains(result))// if result is an error
